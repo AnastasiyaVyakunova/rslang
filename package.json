@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "style": "sass --watch src/sass/style.scss src/style.css",
     "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
     "build": "webpack --config ./webpack.config.js --env mode=prod",
     "lint": "eslint . --ext .ts"
@@ -39,6 +40,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "eslint-config-airbnb-typescript": "^16.1.0"
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "normalize-scss": "^7.0.1"
   }
 }

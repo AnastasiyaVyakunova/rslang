@@ -1,0 +1,26 @@
+@import "mixins";
+
+%font-h2 {
+  font-family: $font-title;
+  @include font(48px, 700);
+}
+
+%font-h4 {
+  font-family: $font-text;
+  @include font(32px, 500);
+}
+
+%font-h5 {
+  font-family: $font-text;
+  @include font(18px, 300);
+}
+
+%font-p {
+  font-family: $font-text;
+  @include font(14px, 300);
+}
+
+%font-btn {
+  font-family: $font-text;
+  @include font(14px, 300);
+}
