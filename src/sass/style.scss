@@ -4,6 +4,7 @@
 @import "abstract/constants";
 @import "abstract/mixins";
 @import "abstract/placeholder";
+@import "authorization";
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -89,6 +90,7 @@
     background-color: $color-yellow;
     border: 1px solid $color-yellow;
     transition: 0.5s;
+    cursor: pointer;
   }
 
   .dropdown {
@@ -176,11 +178,3 @@
   }
   
 }
-
-
-
-
-
-
-
-

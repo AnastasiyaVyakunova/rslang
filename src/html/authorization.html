@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="form-wrapper_content">
+      <div class="form-switch-wrapper">
+        <button class="form_switch-button auth select" type="button">Авторизация</button>
+        <button class="form_switch-button reg" type="button">Регистрация</button>
+        <button class="form_exit" type="button"></button>
+      </div>
+      <form class="form-style" action="#" method="POST">
+        <label class="title-input">
+          <input class="form_email" type="email" name="auth_email" required >
+        <span><span>E-mail</span></span></label>
+        <label class="title-input">
+          <input class="form_pswrd" type="password" name="auth_pass" required >
+        <span><span>Пароль</span></span></label>
+        <button class="form_button" type="submit" name="form_auth_submit">Войти</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
