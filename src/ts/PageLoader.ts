@@ -2,6 +2,7 @@ import { PageName } from './common/constants';
 import { PageContext } from './common/types';
 import IPage from './common/IPage';
 import MainPage from './MainPage/MainPage';
+import '../style.css';
 
 export default class PageLoader {
   private context : PageContext;
