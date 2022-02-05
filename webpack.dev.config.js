@@ -4,6 +4,10 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, '../dist'),
+    static: {
+      directory: path.resolve(__dirname, '../dist'),
+    },
+    port: 9000,
+  // contentBase: path.resolve(__dirname, '../dist'),
   },
 };
