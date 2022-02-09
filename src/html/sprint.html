@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrapper">
+      <nav class="header_navigation">
+        <ul class="navigation">
+          <li class="left-item"><a href="#"></a></li>
+          <li class="left-item"><a href="#">Главная</a></li>
+          <li class="left-item"><a class="textbook-link" href="#">Учебник</a></li>
+            <ul class="dropdown">
+              <li><a href="#">Раздел 1</a></li>
+              <li><a href="#">Раздел 2</a></li>
+              <li><a href="#">Раздел 3</a></li>
+              <li><a href="#">Раздел 4</a></li>
+              <li><a href="#">Раздел 5</a></li>
+              <li><a href="#">Раздел 6</a></li>
+              <li><a href="#">Сложные слова</a></li>
+            </ul>
+          <li class="right-item"><button class="login">Вход</button></li>
+          <li class="right-item"><a href="#">Статистика</a></li>
+          <li class="right-item"><a href="#">Мини-игры</a></li>
+            <ul class="dropdown">
+              <li><a href="#">Аудиовызов</a></li>
+              <li><a href="#">Спринт</a></li>
+            </ul>
+        </ul>
+        <a class="logo" href="#">RS Lang</a>
+      </nav> 
+    </div>
+  </header>
+  <section class="sprint-game">
+    <div class="wrapper sprint-game-wrapper">
+      <div class="sprint-game_content">
+        <span class="sprint_score">0</span>
+        <div class="words-wrapper">
+          <p class="eng-word">Capital</p>
+          <p class="translation-word">Столица</p>
+        </div>
+        <div class="timer-wrapper">
+          <div class="timer_icon"></div>
+          <span>60</span>
+        </div>
+      </div>
+      <div class="answers-wrapper">
+        <button class="btn-correct">Верно</button>
+        <button class="btn-wrong">Неверно</button>
+      </div>
+    </div>
+  </section>
+
+  <template id="start-game">
+    <section class="start-game">
+      <div class="wrapper start-game-wrapper">
+        <div class="half-bg">
+          <div class="shadow"></div>
+        </div>
+        <div class="start-game_content">
+          <h2>Спринт</h2>
+          <p>Попробуй угадать как можно больше слов за 60 секунд</p>
+          <ul class="choose-level">
+            <li class="level"><button class="level-chosen" id="lev-1">1</button></li>
+            <li class="level"><button id="lev-2">2</button></li>
+            <li class="level"><button id="lev-3">3</button></li>
+            <li class="level"><button id="lev-4">4</button></li>
+            <li class="level"><button id="lev-5">5</button></li>
+            <li class="level"><button id="lev-6">6</button></li>
+          </ul>
+          <button class="play-game-btn">Начать</button>
+        </div>
+      </div>
+    </section>
+  </template>
+  
+</body>
+</html>
+

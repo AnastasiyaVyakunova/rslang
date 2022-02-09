@@ -1,0 +1,210 @@
+.start-game {
+  height: calc(100vh - 80px);
+  background-color: $color-black;
+
+  .start-game-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    .half-bg {
+      position: relative;
+      background-image: url(assets/sprint-start-page.jpg);
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      width: 45%;
+      height: 100%;
+    }
+
+    .shadow {
+      position: absolute;
+      height: calc(100vh - 80px);
+      width: 100%;
+      background: linear-gradient(90deg, rgba(3,3,3,1) 0%, rgba(3,3,3,0.835171568627451) 9%, rgba(3,3,3,0.5606617647058824) 19%, rgba(3,3,3,0.3757878151260504) 46%, rgba(3,3,3,0.5410539215686274) 66%, rgba(3,3,3,0.7987570028011204) 78%, rgba(3,3,3,1) 92%, rgba(3,3,3,1) 100%);
+    }
+  
+    .start-game_content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: $color-white;
+      width: 50%;
+      text-align: center;
+
+      h2 {
+        font-family: $font-title;
+        @include font(48px, 700);
+        letter-spacing: 2px;
+        margin: 20px 0;
+      }
+
+      p {
+        font-family: $font-text;
+        @include font(14px, 300, 30px);
+        margin: 0 0 60px 0;
+      }
+
+      .choose-level {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        button {
+          background-color: transparent;
+          border: 0;
+          color: $color-yellow;
+          font-family: $font-text;
+          @include font(40px, 700, 60px);
+          color: $color-white;
+        }
+
+        .level-chosen {
+          border-bottom: 1px solid $color-yellow;
+        }
+
+      }
+
+      .play-game-btn {
+        @extend %font-btn;
+        color: $color-white;
+        height: 40px;
+        width: 220px;
+        background-color: $color-black;
+        border: 1px solid $color-white;
+        border-radius: 10px;
+        margin-top: 60px;
+        transition: 0.5s;
+      }
+
+      .play-game-btn:hover {
+        color: $color-yellow;
+        border: 1px solid $color-yellow;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+
+    }
+
+  }
+
+}
+
+.sprint-game {
+  height: calc(100vh - 80px);
+  background-color: $color-black;
+  color: $color-white;
+
+  .sprint-game-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .sprint-game_content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+  
+      .sprint_score {
+        display: block;
+        font-family: $font-text;
+        @include font(50px, 500);
+        color: $color-yellow;
+        width: 100px;
+        text-align: center;
+      }
+
+      .words-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .eng-word {
+          font-family: $font-text;
+          @include font(60px, 300);
+          margin: 30px 0 30px 0;
+        }
+  
+        .translation-word {
+          font-family: $font-text;
+          @include font(60px, 300);
+          color: $color-yellow;
+          margin: 0;
+        }
+
+      }
+
+      .timer-wrapper {
+        display: flex;
+
+        .timer_icon {
+          background-image: url(assets/timer.png);
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 60px;
+          height: 60px;
+        }
+
+        span {
+          font-family: $font-text;
+          @include font(50px, 500);
+          text-align: center;
+        }
+
+      }
+
+    }
+
+    .answers-wrapper {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-top: 60px;
+      
+      .btn-correct {
+        @extend %font-btn;
+        color: $color-green;
+        height: 40px;
+        width: 110px;
+        background-color: $color-black;
+        border: 1px solid $color-green;
+        border-radius: 10px;
+        margin-right: 20px;
+        transition: 0.5s;
+      }
+
+      .btn-correct:hover {
+        background-color: $color-green;
+        color: $color-white;
+        transition: 0.5s;
+      }
+
+      .btn-wrong {
+        @extend %font-btn;
+        color: $color-red;
+        height: 40px;
+        width: 110px;
+        background-color: $color-black;
+        border: 1px solid $color-red;
+        border-radius: 10px;
+        transition: 0.5s;
+      }
+
+      .btn-wrong:hover {
+        background-color: $color-red;
+        color: $color-white;
+        transition: 0.5s;
+      }
+
+    }
+
+  }
+
+}
+  
+  
+
