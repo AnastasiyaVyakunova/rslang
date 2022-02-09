@@ -478,7 +478,7 @@ button:hover {
   line-height: 14px;
 }
 
-.header_navigation .login, .form-wrapper .form-wrapper_content .form-style .form_button {
+.header_navigation .login, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct, .start-game .start-game-wrapper .start-game_content .play-game-btn, .form-wrapper .form-wrapper_content .form-style .form_button {
   font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
@@ -642,6 +642,197 @@ button:hover {
   cursor: pointer;
 }
 
+.start-game {
+  height: calc(100vh - 80px);
+  background-color: #030303;
+}
+.start-game .start-game-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.start-game .start-game-wrapper .half-bg {
+  position: relative;
+  background-image: url(assets/sprint-start-page.jpg);
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  width: 45%;
+  height: 100%;
+}
+.start-game .start-game-wrapper .shadow {
+  position: absolute;
+  height: calc(100vh - 80px);
+  width: 100%;
+  background: linear-gradient(90deg, #030303 0%, rgba(3, 3, 3, 0.8351715686) 9%, rgba(3, 3, 3, 0.5606617647) 19%, rgba(3, 3, 3, 0.3757878151) 46%, rgba(3, 3, 3, 0.5410539216) 66%, rgba(3, 3, 3, 0.7987570028) 78%, #030303 92%, #030303 100%);
+}
+.start-game .start-game-wrapper .start-game_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  width: 50%;
+  text-align: center;
+}
+.start-game .start-game-wrapper .start-game_content h2 {
+  font-family: "Playfair Display";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: 2px;
+  margin: 20px 0;
+}
+.start-game .start-game-wrapper .start-game_content p {
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 30px;
+  margin: 0 0 60px 0;
+}
+.start-game .start-game-wrapper .start-game_content .choose-level {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.start-game .start-game-wrapper .start-game_content .choose-level button {
+  background-color: transparent;
+  border: 0;
+  color: #f5df4d;
+  font-family: "Montserrat";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 60px;
+  color: #ffffff;
+}
+.start-game .start-game-wrapper .start-game_content .choose-level .level-chosen {
+  border-bottom: 1px solid #f5df4d;
+}
+.start-game .start-game-wrapper .start-game_content .play-game-btn {
+  color: #ffffff;
+  height: 40px;
+  width: 220px;
+  background-color: #030303;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  margin-top: 60px;
+  transition: 0.5s;
+}
+.start-game .start-game-wrapper .start-game_content .play-game-btn:hover {
+  color: #f5df4d;
+  border: 1px solid #f5df4d;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.sprint-game {
+  height: calc(100vh - 80px);
+  background-color: #030303;
+  color: #ffffff;
+}
+.sprint-game .sprint-game-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content .sprint_score {
+  display: block;
+  font-family: "Montserrat";
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 50px;
+  color: #f5df4d;
+  width: 100px;
+  text-align: center;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content .words-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content .words-wrapper .eng-word {
+  font-family: "Montserrat";
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 60px;
+  margin: 30px 0 30px 0;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content .words-wrapper .translation-word {
+  font-family: "Montserrat";
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 60px;
+  color: #f5df4d;
+  margin: 0;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content .timer-wrapper {
+  display: flex;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content .timer-wrapper .timer_icon {
+  background-image: url(assets/timer.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 60px;
+  height: 60px;
+}
+.sprint-game .sprint-game-wrapper .sprint-game_content .timer-wrapper span {
+  font-family: "Montserrat";
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 50px;
+  text-align: center;
+}
+.sprint-game .sprint-game-wrapper .answers-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 60px;
+}
+.sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct {
+  color: #b7f54d;
+  height: 40px;
+  width: 110px;
+  background-color: #030303;
+  border: 1px solid #b7f54d;
+  border-radius: 10px;
+  margin-right: 20px;
+  transition: 0.5s;
+}
+.sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct:hover {
+  background-color: #b7f54d;
+  color: #ffffff;
+  transition: 0.5s;
+}
+.sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong {
+  color: #f58b4d;
+  height: 40px;
+  width: 110px;
+  background-color: #030303;
+  border: 1px solid #f58b4d;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong:hover {
+  background-color: #f58b4d;
+  color: #ffffff;
+  transition: 0.5s;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   background-color: #ffffff;
@@ -663,7 +854,7 @@ button:hover {
 
 .header_navigation {
   position: relative;
-  height: 110px;
+  height: 80px;
 }
 .header_navigation .left-item {
   float: left;
@@ -675,7 +866,7 @@ button:hover {
 }
 .header_navigation a {
   display: block;
-  line-height: 70px;
+  line-height: 40px;
   width: 100px;
   color: #ffffff;
   align-self: center;
@@ -688,15 +879,15 @@ button:hover {
 .header_navigation .logo {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 45%;
   display: block;
   width: 180px;
   text-align: center;
   font-family: "Playfair Display";
-  font-size: 42px;
+  font-size: 33px;
   font-style: normal;
   font-weight: 500;
-  line-height: 42px;
+  line-height: 33px;
   letter-spacing: 6px;
   color: #ffffff;
   text-transform: uppercase;
@@ -712,7 +903,6 @@ button:hover {
   background-color: #030303;
   border: 1px solid #ffffff;
   border-radius: 10px;
-  margin-top: 15px;
   transition: 0.5s;
 }
 .header_navigation .login:hover {
@@ -728,7 +918,7 @@ button:hover {
 
 .welcome {
   position: relative;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 80px);
   background-image: url(assets/welcome-bg-1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
