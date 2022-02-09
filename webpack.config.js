@@ -4,7 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const baseConfig = {
-  entry: path.resolve(__dirname, './src/ts/PageLoader.ts'),
+  // entry: {
+  //   MainPage: path.resolve(__dirname, './src/ts/MainPage/MainPage.ts'),
+  //   SprintPage: path.resolve(__dirname, './src/ts/SprintPage/SprintPage.ts'),
+  // },
+  entry: path.resolve(__dirname, './src/ts/index.ts'),
   mode: 'development',
   module: {
     rules: [
@@ -19,6 +23,7 @@ const baseConfig = {
       },
       { test: /\.tsx?$/, loader: 'ts-loader' },
       { test: /\.js$/, loader: 'source-map-loader' },
+      { test: /\.template.html$/, loader: 'html-loader' },
       {
         test: /\.(png|svg|jpg|jpeg|gif|mp3)$/i,
         type: 'asset/resource',
@@ -37,8 +42,12 @@ const baseConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/index.html'),
-      filename: 'index.html',
+      template: path.resolve(__dirname, './src/html/main.html'),
+      filename: 'main.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src/html/sprint.html'),
+      filename: 'sprint.html',
     }),
     new CleanWebpackPlugin(),
   ],
