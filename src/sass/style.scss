@@ -6,6 +6,8 @@
 @import "abstract/placeholder";
 @import "authorization";
 @import "sprint";
+@import "game-info";
+@import "audiocall";
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -95,6 +97,33 @@
 
   .dropdown {
     display: none;
+		position: absolute;
+    top: 80px;
+    background-color: $color-black;
+    z-index: 99;
+    list-style: none;
+
+    li {
+      min-width: 110px;
+      float: none;
+      display: list-item;
+      position: relative;
+
+      a {
+        line-height: 30px;
+        text-align: center;
+      }
+
+      .d-words {
+        line-height: 24px;
+      }
+
+    }
+
+  }
+
+  li:hover > .dropdown {
+    display: inherit;
   }
 
 }
@@ -155,26 +184,161 @@
 
 .advantages {
   display: flex;
-  height: calc(100vh - 110px);
-  background-color: $color-white;
+  height: 100vh;
 
-  h2 {
-    display: block;
-    font-family: $font-title;
-    @include font(42px, 500);
-    text-align: center;
-  }
+  .advantages_content {
+    margin: 0 auto;
 
-  .layout-3-column {
-    display: flex;
-    justify-content: space-between;
-
-    .advantage {
-      width: 100px;
-      height: 200px;
-      background-color: aqua;
+    h2 {
+      display: block;
+      font-family: $font-title;
+      @include font(42px, 500, 80px);
+      text-align: start;
+      border-bottom: 3px solid $color-yellow;
+      margin: 50px auto 70px;
+    }
+  
+    .layout-3-column {
+      display: flex;
+      justify-content: space-between;
+      width: $content-width;
+  
+      .advantage {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 350px;
+        height: 400px;
+        box-shadow: 3px 5px 4px rgb(0 0 0 / 20%);
+        padding: 20px;
+        filter: grayscale(1);
+        transition: filter 0.5s;
+  
+        .advantage_icon {
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 130px;
+          height: 130px;
+          transition: filter 0.5s;
+        }
+  
+        .tb-icon {
+          background-image: url(assets/textbook-icon.png);
+        }
+  
+        .game-icon {
+          width: 120px;
+          background-image: url(assets/game-icon.png);
+        }
+        
+        .stat-icon {
+          background-image: url(assets/statistic-icon.png);
+        }
+  
+        h4 {
+          font-family: $font-title;
+          @include font(28px, 500);
+          margin: 20px;
+        }
+  
+        p {
+          font-family: $font-text;
+          @include font(14px, 300, 21px);
+          text-align: center;
+        }
+  
+      }
+  
+      .advantage:hover {
+        filter: grayscale(0);
+        transition: filter 0.5s;
+      
+        .advantage_icon {
+          filter: drop-shadow(2px 4px 6px rgb(3, 3, 3, 0.5));
+          transition: filter 0.5s;
+        }
+      
+      }
+  
     }
 
   }
+ 
+}
+
+
+
+.team {
+  display: flex;
+  background-color: $color-black;
+  color: $color-white;
+  height: 100vh;
+
+  .team_content {
+    margin: 0 auto;
+    width: 100%;
+
+    h2 {
+      display: block;
+      font-family: $font-title;
+      @include font(42px, 500);
+      text-align: start;
+      width: 100%;
+      margin: 50px auto 70px;
+    }
+
+  }
+
   
+}
+
+.footer {
+  background-color: $color-black;
+  
+  .footer_content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+
+
+    .rss {
+      display: block;
+      background-image: url(assets/svg/rs_school_js.svg);
+      background-repeat: no-repeat;
+      width: 80px;
+      height: 30px;
+      filter: invert(1);
+      transition: 0.5s;
+    }
+
+    .github-links {
+      display: flex;
+      width: 50%;
+      justify-content: space-around;
+
+      .git {
+        display: block;
+        color: $color-white;
+        font-family: $font-text;
+        @include font(14px, 300);
+        transition: 0.5s;
+      }
+
+      .git:hover {
+        color: $color-yellow;
+        transition: 0.5s;
+      }
+
+    }
+  
+    p {
+      color: $color-white;
+      font-family: $font-text;
+      @include font(14px, 300);
+    }
+
+  }
+
 }

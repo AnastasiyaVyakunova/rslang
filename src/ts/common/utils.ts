@@ -5,7 +5,9 @@ export function addElement(base: Element, nameTag: string, ...nameClass: string[
   return element;
 }
 // nameTemplate = .className | #idName
-export function addFragment(base: Element, nameTemplate: string) {
-  const template: HTMLTemplateElement = document.querySelector(nameTemplate);
-  base.appendChild(template.content.cloneNode(true));
+export function addFragment(base: Element, idTemplate: string, template: string) {
+  const templateWrapper: HTMLTemplateElement = document.createElement('template');
+  templateWrapper.id = idTemplate;
+  templateWrapper.innerHTML = template;
+  base.appendChild(templateWrapper.content.cloneNode(true));
 }
