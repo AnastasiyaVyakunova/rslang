@@ -49,6 +49,10 @@ const baseConfig = {
       template: path.resolve(__dirname, './src/html/sprint.html'),
       filename: 'sprint.html',
     }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src/html/audiocall.html'),
+      filename: 'audiocall.html',
+    }),
     new CleanWebpackPlugin(),
   ],
 };

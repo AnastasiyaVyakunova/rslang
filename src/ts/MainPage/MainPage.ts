@@ -1,3 +1,4 @@
+import Footer from '../common/Footer';
 import { IPage } from '../common/IPage';
 import Menu from '../common/Menu';
 import { PageContext } from '../common/types';
@@ -12,6 +13,7 @@ export default class MainPage extends IPage {
 
   render(): void {
     Menu.render();
+    Footer.render();
     console.log(this.context.pageName);
   }
 

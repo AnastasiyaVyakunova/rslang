@@ -1,7 +1,9 @@
+import '../style.css';
 import PageLoader from './PageLoader';
 import MainPage from './MainPage/MainPage';
 import { PageName } from './common/constants';
 import SprintPage from './SprintPage/SprintPage';
+import AudiocallPage from './AudiocallPage/AudiocallPage';
 
 export function makeMainPage() {
   const loader = new PageLoader(MainPage, PageName.main);
@@ -13,6 +15,11 @@ export function makeSprintPage() {
   return loader;
 }
 
+export function makeAudiocallPage() {
+  const loader = new PageLoader(AudiocallPage, PageName.audiocall);
+  return loader;
+}
+
 window.onload = function () {
   const header = document.querySelector('header');
   switch (header.id) {
@@ -21,6 +28,9 @@ window.onload = function () {
       break;
     case 'sprint':
       makeSprintPage();
+      break;
+    case 'audiocall':
+      makeAudiocallPage();
       break;
     default:
       console.log('unkown page:', header.id);

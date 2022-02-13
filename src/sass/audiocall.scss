@@ -1,0 +1,85 @@
+.audio-game {
+  height: calc(100vh - 80px);
+  background-color: $color-black;
+  color: $color-white;
+
+  .audio-game-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .audio-game_content {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .audio_sound {
+        background-image: url(assets/sound.png);
+        width: 100px;
+        height: 100px;
+        transition: 0.5s;
+      }
+
+      .audio_sound:hover {
+        cursor: pointer;
+        filter: invert(81%) sepia(38%) saturate(625%) hue-rotate(6deg) brightness(308%) contrast(108%);
+        transition: 0.5s;
+      }
+
+      .words-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 80px;
+
+        .audio-translate {
+          background-color: transparent;
+          font-family: $font-text;
+          @include font(24px, 300);
+          color: $color-white;
+          height: 50px;
+          border-radius: 10px;
+          border: 1px solid $color-black;
+          text-transform: lowercase;
+          transition: 0.5s;
+        }
+  
+        .audio-translate:hover {
+          color: $color-yellow;
+          transition: 0.5s;
+        }
+
+        .correct {
+          border: 1px solid $color-green;
+          background-color: $color-green;
+          color: $color-white;
+          transition: 0.5s;
+        }
+
+        .correct:hover {
+          color: $color-white;
+        }
+
+        .wrong {
+          border: 1px solid $color-red;
+          background-color: $color-red;
+          color: $color-white;
+          transition: 0.5s;
+        }
+
+        .wrong:hover {
+          color: $color-white;
+        }
+
+      }
+
+      
+
+    }
+  }
+}

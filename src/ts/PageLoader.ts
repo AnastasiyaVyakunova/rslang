@@ -2,8 +2,6 @@ import { PageName } from './common/constants';
 import { PageContext } from './common/types';
 import { IPage, PageConstructor } from './common/IPage';
 
-import '../style.css';
-
 export default class PageLoader {
   private context: PageContext = { pageName: PageName.undefined, username: '', token: '' };
 
