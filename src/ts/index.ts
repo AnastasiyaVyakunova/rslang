@@ -4,20 +4,22 @@ import MainPage from './MainPage/MainPage';
 import { PageName } from './common/constants';
 import SprintPage from './SprintPage/SprintPage';
 import AudiocallPage from './AudiocallPage/AudiocallPage';
+import TextBookPage from './TextBookPage/TextBookPage';
 
 export function makeMainPage() {
-  const loader = new PageLoader(MainPage, PageName.main);
-  return loader;
+  PageLoader.create(MainPage, PageName.main);
 }
 
 export function makeSprintPage() {
-  const loader = new PageLoader(SprintPage, PageName.sprint);
-  return loader;
+  PageLoader.create(SprintPage, PageName.sprint);
 }
 
 export function makeAudiocallPage() {
-  const loader = new PageLoader(AudiocallPage, PageName.audiocall);
-  return loader;
+  PageLoader.create(AudiocallPage, PageName.audiocall);
+}
+
+export function makeTextBookPage() {
+  PageLoader.create(TextBookPage, PageName.textbook);
 }
 
 window.onload = function () {
@@ -31,6 +33,9 @@ window.onload = function () {
       break;
     case 'audiocall':
       makeAudiocallPage();
+      break;
+    case 'textbook':
+      makeTextBookPage();
       break;
     default:
       console.log('unkown page:', header.id);

@@ -939,10 +939,10 @@ button:hover {
   transition: 0.5s;
   background-color: transparent;
   font-family: "Montserrat";
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 300;
-  line-height: 18px;
+  line-height: 16px;
   text-align: center;
 }
 .textbook .textbook_content .levels_wrapper .level:hover,
@@ -961,8 +961,8 @@ button:hover {
 }
 .textbook .textbook_content .textbook_cards .card {
   position: relative;
-  height: 200px;
-  width: 300px;
+  height: 220px;
+  width: 350px;
   perspective: 1000px;
 }
 .textbook .textbook_content .textbook_cards .card .card_front {
@@ -971,9 +971,8 @@ button:hover {
   transition: 1s;
   width: 100%;
   height: 100%;
-  background-image: url(assets/demo.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   z-index: 0;
 }
 .textbook .textbook_content .textbook_cards .card .card_front .card_content {
@@ -1015,8 +1014,13 @@ button:hover {
   border: none;
   background-color: transparent;
   z-index: 2;
+  transition: 0.5s;
 }
-.textbook .textbook_content .textbook_cards .card .card_front:after {
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .card_sound:hover {
+  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
+  transition: 0.5s;
+}
+.textbook .textbook_content .textbook_cards .card .card_front::before {
   content: "";
   background: rgba(0, 0, 0, 0.6);
   display: block;
@@ -1029,6 +1033,9 @@ button:hover {
 }
 .textbook .textbook_content .textbook_cards .card .card_back {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   backface-visibility: hidden;
   transform: rotateY(180deg);
   width: 100%;
@@ -1055,12 +1062,14 @@ button:hover {
   text-align: center;
   margin: 5px 0;
 }
-.textbook .textbook_content .textbook_cards .card:hover .card_front {
-  cursor: pointer;
-  transform: rotateY(180deg);
-}
+.textbook .textbook_content .textbook_cards .card:hover .card_front,
 .textbook .textbook_content .textbook_cards .card:hover .card_back {
   cursor: pointer;
+}
+.textbook .textbook_content .textbook_cards .card_rotator .card_front {
+  transform: rotateY(180deg);
+}
+.textbook .textbook_content .textbook_cards .card_rotator .card_back {
   transform: rotateY(360deg);
 }
 .textbook .textbook_content .pagination_wrapper {

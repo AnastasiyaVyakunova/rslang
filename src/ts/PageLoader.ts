@@ -1,21 +1,39 @@
 import { PageName } from './common/constants';
 import { PageContext } from './common/types';
 import { IPage, PageConstructor } from './common/IPage';
+import Storage from './common/Storage';
+
+function createContext(): PageContext {
+  return {
+    pageName: PageName.undefined,
+    user: {
+      username: '', token: '',
+    },
+    book: {
+      pageId: 0, groupId: 0,
+    },
+  };
+}
 
 export default class PageLoader {
-  private context: PageContext = { pageName: PageName.undefined, username: '', token: '' };
+  private static context: PageContext = createContext();
 
-  private page: IPage;
+  private static page: IPage;
 
-  private initContext(name: PageName) {
+  private static initContext(name: PageName) {
     // this function will be read user login and user token from storage
-    this.context.pageName = name;
+    PageLoader.context.pageName = name;
+    Storage.load(PageLoader.context);
   }
 
-  constructor(Fabric: PageConstructor, name: PageName) {
+  static create(Fabric: PageConstructor, name: PageName) {
     this.initContext(name);
     this.page = new Fabric(this.context);
-    this.page.render();
-    this.page.setHandler();
+    this.page.render()
+      .then(() => this.page.setHandler());
+  }
+
+  static exit() {
+    Storage.store(PageLoader.context);
   }
 }

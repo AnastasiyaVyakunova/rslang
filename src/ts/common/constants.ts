@@ -7,4 +7,6 @@ export enum PageName {
   statistics,
 }
 
-export const baseUrl = 'url';
+export const maxNumTextBookSubPage = 30;
+export const numSubPageButton = 5;
+export const baseUrl = 'https://rslang-heroku.herokuapp.com/';

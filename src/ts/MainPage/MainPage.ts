@@ -11,13 +11,15 @@ export default class MainPage extends IPage {
     this.context = ctx;
   }
 
-  render(): void {
+  render(): Promise<boolean> {
     Menu.render();
     Footer.render();
     console.log(this.context.pageName);
+    return Promise.resolve(true);
   }
 
   setHandler(): void {
+    Menu.setHandler(this.context);
     console.log(this.context.pageName);
   }
 }
