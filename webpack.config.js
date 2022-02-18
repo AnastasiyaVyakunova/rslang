@@ -53,6 +53,10 @@ const baseConfig = {
       template: path.resolve(__dirname, './src/html/audiocall.html'),
       filename: 'audiocall.html',
     }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src/html/textbook.html'),
+      filename: 'textbook.html',
+    }),
     new CleanWebpackPlugin(),
   ],
 };

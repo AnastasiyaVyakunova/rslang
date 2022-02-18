@@ -10,12 +10,14 @@ export default class AudiocallPage extends IPage {
     this.context = ctx;
   }
 
-  render(): void {
+  render(): Promise<boolean> {
     Menu.render();
     console.log(this.context.pageName);
+    return Promise.resolve(true);
   }
 
   setHandler(): void {
+    Menu.setHandler(this.context);
     console.log(this.context.pageName);
   }
 }

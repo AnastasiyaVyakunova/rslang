@@ -2,7 +2,7 @@ import { PageContext } from './types';
 
 export abstract class IPage {
   abstract context: PageContext;
-  abstract render(): void;
+  abstract render(): Promise<boolean>;
   abstract setHandler(): void;
 }
 

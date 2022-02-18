@@ -21,7 +21,7 @@
         transition: 0.5s;
         background-color: transparent;
         font-family: $font-text;
-        @include font(18px, 300);
+        @include font(16px, 300);
         text-align: center;
         
       }
@@ -45,8 +45,8 @@
 
       .card {
         position: relative;
-        height: 200px;
-        width: 300px;
+        height: 220px;
+        width: 350px;
         perspective: 1000px;
 
         .card_front {
@@ -55,9 +55,8 @@
           transition: 1s;
           width: 100%;
           height: 100%;
-          background-image: url(assets/demo.jpg);
           background-repeat: no-repeat;
-          background-size: contain;
+          background-size: cover;
           z-index: 0;
 
           .card_content {
@@ -95,13 +94,19 @@
               border: none;
               background-color: transparent;
               z-index: 2;
+              transition: 0.5s;
+            }
+
+            .card_sound:hover {
+              filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
+              transition: 0.5s;
             }
 
           }
 
         }
 
-        .card_front:after {
+        .card_front::before {
           content: '';
           background: rgba(0,0,0,0.6); 
           display: block;
@@ -115,6 +120,9 @@
 
         .card_back {
           position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           backface-visibility: hidden;
           transform: rotateY(180deg);
           width: 100%;
@@ -136,18 +144,30 @@
             text-align: center;
             margin: 5px 0;
           }
+      
         }
 
       }
 
-      .card:hover .card_front {
-        cursor: pointer;
-        transform: rotateY(180deg);
+      .card:hover {
+
+        .card_front,
+        .card_back {
+          cursor: pointer;
+        }
+        
       }
 
-      .card:hover .card_back {
-        cursor: pointer;
-        transform: rotateY(360deg);
+      .card_rotator {
+      
+        .card_front {
+          transform: rotateY(180deg);
+        }
+
+        .card_back {
+          transform: rotateY(360deg);
+        }
+
       }
 
     }
