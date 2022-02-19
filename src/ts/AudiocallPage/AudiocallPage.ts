@@ -11,7 +11,7 @@ export default class AudiocallPage extends IPage {
   }
 
   render(): Promise<boolean> {
-    Menu.render();
+    Menu.render(this.context);
     console.log(this.context.pageName);
     return Promise.resolve(true);
   }

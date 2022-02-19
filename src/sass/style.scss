@@ -39,6 +39,8 @@
   }
 
   .right-item {
+    display: flex;
+    align-items: center;
     float: right;
     padding: 20px;
   }
@@ -96,9 +98,32 @@
     cursor: pointer;
   }
 
+  .user-name {
+    @extend %font-btn;
+    color: $color-yellow;
+    margin: 13px 2px 11px 0;
+  }
+
+  .logout {
+    background-image: url(assets/logout.png);
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    transition: 0.5s;
+  }
+
+  .logout:hover {
+    filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(108%) contrast(92%);
+  }
+
   .dropdown {
     display: none;
 		position: absolute;
+    flex-direction: column;
     top: 80px;
     background-color: $color-black;
     z-index: 99;
@@ -202,7 +227,7 @@
     .layout-3-column {
       display: flex;
       justify-content: space-between;
-      width: $content-width;
+      width: 100%;
   
       .advantage {
         display: flex;

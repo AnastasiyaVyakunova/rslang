@@ -478,7 +478,7 @@ button:hover {
   line-height: 14px;
 }
 
-.header_navigation .login, .start-game .start-game-wrapper .start-game_content .play-game-btn, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct, .form-wrapper .form-wrapper_content .form-style .form_button {
+.header_navigation .user-name, .header_navigation .login, .start-game .start-game-wrapper .start-game_content .play-game-btn, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct, .overlay .form-wrapper .form-wrapper_content .form-style .form_button {
   font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
@@ -486,24 +486,37 @@ button:hover {
   line-height: 14px;
 }
 
-.form-wrapper {
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(3, 3, 3, 0.7);
+  z-index: 10;
+  align-items: center;
+}
+.overlay .form-wrapper {
   width: 500px;
-  height: 500px;
+  min-height: 400px;
   margin: 0 auto;
   background-color: #030303;
   color: #ffffff;
 }
-.form-wrapper .form-wrapper_content {
+.overlay .form-wrapper .form-wrapper_content {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
-.form-wrapper .form-wrapper_content .form-switch-wrapper {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
   align-items: center;
 }
-.form-wrapper .form-wrapper_content .form-switch-wrapper .form_switch-button {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .form_switch-button {
   color: #ffffff;
   font-family: "Montserrat";
   font-size: 18px;
@@ -516,11 +529,11 @@ button:hover {
   height: 60px;
   transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-switch-wrapper .form_switch-button:hover {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .form_switch-button:hover {
   color: #f5df4d;
   transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-switch-wrapper .form_exit {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .form_exit {
   background-color: transparent;
   border: none;
   background-image: url(assets/svg/white-close.svg);
@@ -529,34 +542,34 @@ button:hover {
   height: 25px;
   transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-switch-wrapper .form_exit:hover {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .form_exit:hover {
   filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
   transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-switch-wrapper .select {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .select {
   border-bottom: 1px solid #f5df4d;
 }
-.form-wrapper .form-wrapper_content .form-style {
+.overlay .form-wrapper .form-wrapper_content .form-style {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.form-wrapper .form-wrapper_content .form-style .title-input {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input {
   float: left;
   width: 330px;
   height: 40px;
-  margin: 50px 0 0 0;
+  margin: 40px 0 0 0;
   position: relative;
   clear: both;
 }
-.form-wrapper .form-wrapper_content .form-style .title-input span {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input span {
   width: 100%;
   height: 40px;
   line-height: 40px;
   position: absolute;
   left: 0;
 }
-.form-wrapper .form-wrapper_content .form-style .title-input span span {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input span span {
   position: absolute;
   top: 10px;
   z-index: 1;
@@ -570,7 +583,7 @@ button:hover {
   transition: 0.5s;
   -webkit-transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-style .title-input span:before {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input span:before {
   content: "";
   width: 0%;
   height: 1px;
@@ -582,7 +595,7 @@ button:hover {
   transition: 0.5s;
   -webkit-transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-style .title-input span:after {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input span:after {
   content: "";
   width: 0%;
   height: 1px;
@@ -594,7 +607,13 @@ button:hover {
   transition: 0.5s;
   -webkit-transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-style input {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input .wrong:before {
+  background-color: #e10505;
+}
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input .wrong:after {
+  background-color: #e10505;
+}
+.overlay .form-wrapper .form-wrapper_content .form-style input {
   position: relative;
   float: left;
   width: 330px;
@@ -610,32 +629,36 @@ button:hover {
   font-weight: 300;
   line-height: 14px;
 }
-.form-wrapper .form-wrapper_content .form-style input:focus {
+.overlay .form-wrapper .form-wrapper_content .form-style input:focus {
   outline: 0;
 }
-.form-wrapper .form-wrapper_content .form-style input:focus + span span {
+.overlay .form-wrapper .form-wrapper_content .form-style input:required + span span,
+.overlay .form-wrapper .form-wrapper_content .form-style input:focus + span span {
   position: absolute;
   cursor: initial;
   top: -25px;
   color: #f5df4d;
 }
-.form-wrapper .form-wrapper_content .form-style input:focus + span:before {
+.overlay .form-wrapper .form-wrapper_content .form-style input:required + span:before,
+.overlay .form-wrapper .form-wrapper_content .form-style input:focus + span:before {
   width: 50%;
 }
-.form-wrapper .form-wrapper_content .form-style input:focus + span:after {
+.overlay .form-wrapper .form-wrapper_content .form-style input:required + span:after,
+.overlay .form-wrapper .form-wrapper_content .form-style input:focus + span:after {
   width: 50%;
 }
-.form-wrapper .form-wrapper_content .form-style .form_button {
+.overlay .form-wrapper .form-wrapper_content .form-style .form_button {
   color: #ffffff;
   height: 40px;
   width: 220px;
   background-color: #030303;
   border: 1px solid #ffffff;
   border-radius: 10px;
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   transition: 0.5s;
 }
-.form-wrapper .form-wrapper_content .form-style .form_button:hover {
+.overlay .form-wrapper .form-wrapper_content .form-style .form_button:hover {
   color: #f5df4d;
   border: 1px solid #f5df4d;
   transition: 0.5s;
@@ -1200,6 +1223,8 @@ button:hover {
   padding: 20px;
 }
 .header_navigation .right-item {
+  display: flex;
+  align-items: center;
   float: right;
   padding: 20px;
 }
@@ -1251,9 +1276,28 @@ button:hover {
   transition: 0.5s;
   cursor: pointer;
 }
+.header_navigation .user-name {
+  color: #f5df4d;
+  margin: 13px 2px 11px 0;
+}
+.header_navigation .logout {
+  background-image: url(assets/logout.png);
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+  transition: 0.5s;
+}
+.header_navigation .logout:hover {
+  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(108%) contrast(92%);
+}
 .header_navigation .dropdown {
   display: none;
   position: absolute;
+  flex-direction: column;
   top: 80px;
   background-color: #030303;
   z-index: 99;
@@ -1352,7 +1396,7 @@ button:hover {
 .advantages .advantages_content .layout-3-column {
   display: flex;
   justify-content: space-between;
-  width: 1197px;
+  width: 100%;
 }
 .advantages .advantages_content .layout-3-column .advantage {
   display: flex;

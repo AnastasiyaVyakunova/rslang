@@ -1,14 +1,12 @@
 import { PageName } from './common/constants';
-import { PageContext } from './common/types';
+import { PageContext, resetAuthContext } from './common/types';
 import { IPage, PageConstructor } from './common/IPage';
 import Storage from './common/Storage';
 
 function createContext(): PageContext {
   return {
     pageName: PageName.undefined,
-    user: {
-      username: '', token: '',
-    },
+    user: resetAuthContext(),
     book: {
       pageId: 0, groupId: 0,
     },

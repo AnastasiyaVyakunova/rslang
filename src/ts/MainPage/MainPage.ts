@@ -12,7 +12,7 @@ export default class MainPage extends IPage {
   }
 
   render(): Promise<boolean> {
-    Menu.render();
+    Menu.render(this.context);
     Footer.render();
     console.log(this.context.pageName);
     return Promise.resolve(true);
