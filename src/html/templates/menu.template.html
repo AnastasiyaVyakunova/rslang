@@ -14,7 +14,11 @@
           <!-- <li><a class="d-words" href="textbook.html">Сложные слова</a></li> -->
         </ul>
       </li>
-      <li class="right-item"><button class="login">Вход</button></li>
+      <li class="right-item">
+        <button class="login">Вход</button>
+        <p class="user-name" hidden></p>
+        <button class="logout" hidden></button>
+      </li>
       <li class="right-item"><a href="#">Статистика</a></li>
       <li class="right-item"><a>Мини-игры</a>
         <ul class="dropdown">
@@ -25,4 +29,30 @@
     </ul>
     <a class="logo" href="main.html">RS Lang</a>
   </nav> 
+</div>
+<div class="overlay">
+  <div class="form-wrapper">
+    <div class="form-wrapper_content">
+      <div class="form-switch-wrapper">
+        <button class="form_switch-button auth select" type="button">Авторизация</button>
+        <button class="form_switch-button reg" type="button">Регистрация</button>
+        <button class="form_exit" type="button"></button>
+      </div>
+      <form class="form-style" action="" method="">
+        <label id="label0" class="title-input" hidden>
+          <input class="form_name" type="text" name="reg_name" optional >
+        <span class="line-name"><span>Имя</span></span></label>
+        <label id="label1" class="title-input">
+          <input class="form_email" type="email" name="auth_email" optional >
+        <span class="line-email"><span>E-mail</span></span></label>
+        <label id="label2" class="title-input">
+          <input class="form_pswrd" type="password" name="auth_pass" optional >
+        <span class="line-pswrd"><span>Пароль</span></span></label>
+        <label id="label3" class="title-input" hidden>
+          <input class="form_approve" type="password" name="reg_pass" optional >
+        <span class="line-approve"><span>Подтверждение прароля</span></span></label>
+        <button class="form_button login-btn" type="button" name="form_auth_submit">Войти</button>
+      </form>
+    </div>
+  </div>
 </div>

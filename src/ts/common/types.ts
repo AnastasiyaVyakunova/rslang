@@ -6,9 +6,22 @@ export type TextBookContext = {
 };
 
 export type AuthContext = {
-  username: string;
+  userName: string;
+  userEmail: string;
   token: string;
+  tokenRefresh: string;
+  id: string;
 };
+
+export function resetAuthContext() {
+  return {
+    userName: '',
+    userEmail: '',
+    token: '',
+    tokenRefresh: '',
+    id: '',
+  };
+}
 
 export type PageContext = {
   pageName: PageName;
@@ -33,4 +46,15 @@ export interface WordContent extends Content {
   textExampleTranslate: string,
   textMeaningTranslate: string,
   wordTranslate: string
+}
+
+export interface SigninContext {
+  email: string,
+  password: string
+}
+
+export interface SignupContext {
+  name: string,
+  email: string,
+  password: string
 }

@@ -91,7 +91,7 @@ export default class TextBookPage extends IApplication {
   }
 
   render(): Promise<boolean> {
-    Menu.render();
+    Menu.render(this.context);
     Footer.render();
     this.renderPagination();
     return this.renderCards();
