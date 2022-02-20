@@ -1028,8 +1028,11 @@ button:hover {
   margin: 0;
   z-index: 2;
 }
-.textbook .textbook_content .textbook_cards .card .card_front .card_content .card_sound {
-  background-image: url(assets/sound.png);
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper button {
   width: 32px;
   height: 32px;
   background-size: contain;
@@ -1037,11 +1040,48 @@ button:hover {
   border: none;
   background-color: transparent;
   z-index: 2;
+  margin: 0 12px;
   transition: 0.5s;
 }
-.textbook .textbook_content .textbook_cards .card .card_front .card_content .card_sound:hover {
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .card_sound {
+  background-image: url(assets/sound.png);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .add-studied {
+  background-image: url(assets/checkmark.png);
+  filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .add-difficult {
+  background-image: url(assets/plus.png);
+  filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .card_sound:hover {
   filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
   transition: 0.5s;
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .studied {
+  filter: invert(81%) sepia(92%) saturate(350%) hue-rotate(23deg) brightness(97%) contrast(97%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .hard {
+  filter: invert(71%) sepia(35%) saturate(2405%) hue-rotate(325deg) brightness(98%) contrast(96%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .game-result {
+  display: none;
+  z-index: 2;
+  color: #ffffff;
+  width: 100%;
+  justify-content: space-around;
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .game-result p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14px;
+  margin: 0;
+  z-index: 2;
 }
 .textbook .textbook_content .textbook_cards .card .card_front::before {
   content: "";
@@ -1187,7 +1227,12 @@ button:hover {
   line-height: 18px;
   text-align: center;
 }
-.textbook .textbook_content .game_wrapper .game_content .game:hover {
+.textbook .textbook_content .game_wrapper .game_content .game-forbidden {
+  color: #030303;
+  background: #f58b4d;
+  border: 1px solid #f58b4d;
+}
+.textbook .textbook_content .game_wrapper .game_content .game:hover:not(.game-forbidden) {
   cursor: pointer;
   color: #030303;
   background-color: #f5df4d;
@@ -1315,6 +1360,7 @@ button:hover {
 }
 .header_navigation .dropdown li .d-words {
   line-height: 24px;
+  display: none;
 }
 .header_navigation li:hover > .dropdown {
   display: inherit;
