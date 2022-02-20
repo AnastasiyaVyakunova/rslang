@@ -15,7 +15,7 @@
       justify-content: space-around;
       align-items: center;
       width: 100%;
-  
+
       .sprint_score {
         display: block;
         font-family: $font-text;
@@ -36,14 +36,13 @@
           @include font(60px, 300);
           margin: 30px 0 30px 0;
         }
-  
+
         .translation-word {
           font-family: $font-text;
           @include font(60px, 300);
           color: $color-yellow;
           margin: 0;
         }
-
       }
 
       .timer-wrapper {
@@ -62,9 +61,7 @@
           @include font(50px, 500);
           text-align: center;
         }
-
       }
-
     }
 
     .answers-wrapper {
@@ -72,7 +69,7 @@
       width: 100%;
       justify-content: center;
       margin-top: 60px;
-      
+
       .btn-correct {
         @extend %font-btn;
         color: $color-green;
@@ -107,12 +104,6 @@
         color: $color-white;
         transition: 0.5s;
       }
-
     }
-
   }
-
 }
-  
-  
-
