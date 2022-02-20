@@ -1,5 +1,5 @@
 import { PageName } from './common/constants';
-import { PageContext, resetAuthContext } from './common/types';
+import { PageContext, resetAuthContext, resetTextBookContext } from './common/types';
 import { IPage, PageConstructor } from './common/IPage';
 import Storage from './common/Storage';
 
@@ -7,9 +7,7 @@ function createContext(): PageContext {
   return {
     pageName: PageName.undefined,
     user: resetAuthContext(),
-    book: {
-      pageId: 0, groupId: 0,
-    },
+    book: resetTextBookContext(),
   };
 }
 

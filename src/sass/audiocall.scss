@@ -17,8 +17,31 @@
       align-items: center;
       width: 100%;
 
+      .correct-answer {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .correct-image {
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 200px;
+          height: 150px;
+          border-radius: 50%;
+        }
+
+        p {
+          font-family: $font-text;
+          @include font(24px, 300);
+          color: $color-yellow;
+          text-transform: lowercase;
+        }
+      }
+
       .audio_sound {
         background-image: url(assets/sound.png);
+        background-size: contain;
         width: 100px;
         height: 100px;
         transition: 0.5s;
@@ -28,6 +51,11 @@
         cursor: pointer;
         filter: invert(81%) sepia(38%) saturate(625%) hue-rotate(6deg) brightness(308%) contrast(108%);
         transition: 0.5s;
+      }
+
+      .mini {
+        width: 50px;
+        height: 50px;
       }
 
       .words-wrapper {
