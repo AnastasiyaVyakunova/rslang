@@ -5,7 +5,6 @@ import {
   PageContext, SigninContext, SignupContext, resetAuthContext,
 } from './types';
 import { baseUrl } from './constants';
-import Storage from './Storage';
 
 export default class Menu {
   static ulHandler(ctx: PageContext, header: HTMLElement) {
@@ -35,6 +34,10 @@ export default class Menu {
           break;
         case 'groupId6':
           ctx.book.groupId = 5;
+          ctx.book.pageId = 0;
+          break;
+        case 'groupId7':
+          ctx.book.groupId = -1;
           ctx.book.pageId = 0;
           break;
         default: break;
@@ -68,7 +71,7 @@ export default class Menu {
       logout.hidden = true;
       userNameText.hidden = true;
       userNameText.textContent = '';
-      window.location.href = `${window.location.origin}/main.html`;
+      window.location.href = `${window.location.origin}/`;
     };
 
     const email: HTMLInputElement = overlay.querySelector('.form_email');
@@ -241,7 +244,7 @@ export default class Menu {
           const dataPost: SigninContext = { email: emailString, password: pswrdString };
           Menu.signin(dataPost, ctx).then(() => {
             overlay.style.display = 'none';
-            Storage.store(ctx);
+            PageLoader.exit();
             const login: HTMLElement = header.querySelector('.login');
             const logout: HTMLElement = header.querySelector('.logout');
             const userNameText: HTMLElement = header.querySelector('.user-name');
@@ -249,7 +252,7 @@ export default class Menu {
             logout.hidden = false;
             userNameText.hidden = false;
             userNameText.textContent = ctx.user.userName;
-            window.location.href = `${window.location.origin}/main.html`;
+            window.location.href = `${window.location.origin}/`;
           }, () => errorHappens());
         } else {
           errorHappens();
@@ -312,10 +315,12 @@ export default class Menu {
       const login: HTMLElement = header.querySelector('.login');
       const logout: HTMLElement = header.querySelector('.logout');
       const userNameText: HTMLElement = header.querySelector('.user-name');
+      const dWords: HTMLElement = header.querySelector('.d-words');
       login.hidden = true;
       logout.hidden = false;
       userNameText.hidden = false;
       userNameText.textContent = ctx.user.userName;
+      dWords.style.display = 'flex';
     }
   }
 }

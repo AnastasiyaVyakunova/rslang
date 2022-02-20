@@ -85,21 +85,68 @@
               z-index: 2;
             }
 
-            .card_sound {
-              background-image: url(assets/sound.png);
-              width: 32px;
-              height: 32px;
-              background-size: contain;
-              background-repeat: no-repeat;
-              border: none;
-              background-color: transparent;
-              z-index: 2;
-              transition: 0.5s;
+            .btn-card-wrapper {
+              display: flex;
+              justify-content: space-around;
+
+              button {
+                width: 32px;
+                height: 32px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                border: none;
+                background-color: transparent;
+                z-index: 2;
+                margin: 0 12px;
+                transition: 0.5s;
+              }
+
+              .card_sound {
+                background-image: url(assets/sound.png);
+              }
+
+              .add-studied {
+                background-image: url(assets/checkmark.png);
+                filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+              }
+
+              .add-difficult {
+                background-image: url(assets/plus.png);
+                filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+              }
+  
+              .card_sound:hover {
+                filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
+                transition: 0.5s;
+              }
+
+              .studied {
+                filter: invert(81%) sepia(92%) saturate(350%) hue-rotate(23deg) brightness(97%) contrast(97%);
+              }
+
+              .hard {
+                filter: invert(71%) sepia(35%) saturate(2405%) hue-rotate(325deg) brightness(98%) contrast(96%);
+              }
+
             }
 
-            .card_sound:hover {
-              filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
-              transition: 0.5s;
+            .game-result {
+              display: none;
+              z-index: 2;
+              color: $color-white;
+              width: 100%;
+              justify-content: space-around;
+ 
+              p {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: $font-text;
+                @include font(14px, 300);
+                margin: 0;
+                z-index: 2;
+
+              }
             }
 
           }
@@ -265,10 +312,16 @@
             @include font(18px, 700);
             text-align: center;
           }
-
         }
 
-        .game:hover {
+        .game-forbidden {
+          color: $color-black;
+          background: $color-red;
+          border: 1px solid $color-red;
+
+        }
+        
+        .game:hover:not(.game-forbidden) {
           cursor: pointer;
           color: $color-black;
           background-color: $color-yellow;

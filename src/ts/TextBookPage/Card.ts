@@ -1,10 +1,10 @@
-import IComponent from '../common/IComponent';
-import { Content, WordContent } from '../common/types';
+import IAuthComponent from '../common/IAuthComponent';
+import { Content, WordContent, AuthContext } from '../common/types';
 import cardTemplate from '../../html/templates/card.template.html';
 import { addFragment } from '../common/utils';
 import { baseUrl } from '../common/constants';
 
-export default class Card extends IComponent {
+export default class Card extends IAuthComponent {
   component: HTMLElement;
 
   static isPlayed: boolean = false;
@@ -36,6 +36,46 @@ export default class Card extends IComponent {
     cardFront.style.backgroundImage = `url(${baseUrl}${data.image})`;
   }
 
+  authRender(auth: AuthContext) {
+    if (auth.id !== '') {
+      this.component.querySelector<HTMLElement>('.add-studied').hidden = false;
+      this.component.querySelector<HTMLElement>('.add-difficult').hidden = false;
+      this.component.querySelector<HTMLElement>('.game-result').style.display = 'flex';
+
+      fetch(`${baseUrl}users/${auth.id}/words/${this.component.id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${auth.token}`,
+          'Accept': 'application/json',
+        },
+      }).then((response) => {
+        switch (response.status) {
+          case 200:
+            return response.json();
+          case 404:
+            return Promise.resolve(true);
+          default:
+            throw new Error('Token invalid');
+        }
+      }, () => Promise.reject(Error))
+        .then((data) => {
+          const studied: HTMLElement = this.component.querySelector('.add-studied');
+          const difficult: HTMLElement = this.component.querySelector('.add-difficult');
+          switch (data.difficulty) {
+            case 'hard':
+              difficult.classList.add('hard');
+              break;
+            case 'learned':
+              studied.classList.add('studied');
+              break;
+            default:
+              break;
+          }
+          return Promise.resolve(true);
+        }, () => Promise.reject(Error));
+    }
+  }
+
   playAudio() {
     const audioWord: HTMLAudioElement = this.component.querySelector('#audioWord');
     const audioMeaning: HTMLAudioElement = this.component.querySelector('#audioMeaning');
@@ -62,6 +102,70 @@ export default class Card extends IComponent {
       if (!Card.isPlayed) {
         Card.isPlayed = true;
         this.playAudio();
+      }
+      event.stopImmediatePropagation();
+    };
+  }
+
+  setAuthHandler(auth: AuthContext): void {
+    const studied: HTMLElement = this.component.querySelector('.add-studied');
+    const difficult: HTMLElement = this.component.querySelector('.add-difficult');
+
+    const updateWord = (method: string, data: Object) => {
+      console.log(JSON.stringify(data));
+      fetch(`${baseUrl}users/${auth.id}/words/${this.component.id}`, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth.token}`,
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        if (response.status === 401) {
+          throw new Error('Token invalid');
+        }
+      });
+    };
+
+    const deleteWord = () => {
+      fetch(`${baseUrl}users/${auth.id}/words/${this.component.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${auth.token}`,
+          'Accept': 'application/json',
+        },
+      }).then((response) => {
+        if (response.status === 401) {
+          throw new Error('Token invalid');
+        }
+      });
+    };
+
+    studied.onclick = (event) => {
+      if (studied.classList.contains('studied')) {
+        studied.classList.remove('studied');
+        deleteWord();
+      } else {
+        studied.classList.add('studied');
+        const method = (difficult.classList.contains('hard')) ? 'PUT' : 'POST';
+        const data = { difficulty: 'learned', optional: {} };
+        updateWord(method, data);
+        difficult.classList.remove('hard');
+      }
+      event.stopImmediatePropagation();
+    };
+
+    difficult.onclick = (event) => {
+      if (difficult.classList.contains('hard')) {
+        difficult.classList.remove('hard');
+        deleteWord();
+      } else {
+        difficult.classList.add('hard');
+        const method = (studied.classList.contains('studied')) ? 'PUT' : 'POST';
+        const data = { difficulty: 'hard', optional: {} };
+        updateWord(method, data);
+        studied.classList.remove('studied');
       }
       event.stopImmediatePropagation();
     };
