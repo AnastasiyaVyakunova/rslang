@@ -884,8 +884,31 @@ button:hover {
   align-items: center;
   width: 100%;
 }
+.audio-game .audio-game-wrapper .audio-game_content .correct-answer {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.audio-game .audio-game-wrapper .audio-game_content .correct-answer .correct-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 150px;
+  border-radius: 50%;
+}
+.audio-game .audio-game-wrapper .audio-game_content .correct-answer p {
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  color: #f5df4d;
+  text-transform: lowercase;
+}
 .audio-game .audio-game-wrapper .audio-game_content .audio_sound {
   background-image: url(assets/sound.png);
+  background-size: contain;
   width: 100px;
   height: 100px;
   transition: 0.5s;
@@ -894,6 +917,10 @@ button:hover {
   cursor: pointer;
   filter: invert(81%) sepia(38%) saturate(625%) hue-rotate(6deg) brightness(308%) contrast(108%);
   transition: 0.5s;
+}
+.audio-game .audio-game-wrapper .audio-game_content .mini {
+  width: 50px;
+  height: 50px;
 }
 .audio-game .audio-game-wrapper .audio-game_content .words-wrapper {
   display: flex;

@@ -5,6 +5,13 @@ export type TextBookContext = {
   groupId: number;
 };
 
+export function resetTextBookContext() {
+  return {
+    pageId: 0,
+    groupId: 0,
+  };
+}
+
 export type AuthContext = {
   userName: string;
   userEmail: string;
@@ -46,6 +53,12 @@ export interface WordContent extends Content {
   textExampleTranslate: string,
   textMeaningTranslate: string,
   wordTranslate: string
+}
+
+export interface AudiocallContent extends Content {
+  book: TextBookContext;
+  replacement: HTMLElement;
+  parent: HTMLElement;
 }
 
 export interface SigninContext {

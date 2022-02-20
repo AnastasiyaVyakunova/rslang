@@ -71,6 +71,23 @@ export default class Card extends IAuthComponent {
             default:
               break;
           }
+          const resA = this.component.querySelector('.audiocall-result');
+          const resS = this.component.querySelector('.sprint-result');
+          if (data.optional === undefined) {
+            resA.textContent = '0';
+            resS.textContent = '0';
+          } else {
+            if (data.optional.audiocall !== undefined) {
+              resA.textContent = data.optional.audiocall.totalRight;
+            } else {
+              resA.textContent = '0';
+            }
+            if (data.optional.sprint !== undefined) {
+              resS.textContent = data.optional.sprint.totalRight;
+            } else {
+              resS.textContent = '0';
+            }
+          }
           return Promise.resolve(true);
         }, () => Promise.reject(Error));
     }
@@ -111,9 +128,8 @@ export default class Card extends IAuthComponent {
     const studied: HTMLElement = this.component.querySelector('.add-studied');
     const difficult: HTMLElement = this.component.querySelector('.add-difficult');
 
-    const updateWord = (method: string, data: Object) => {
-      console.log(JSON.stringify(data));
-      fetch(`${baseUrl}users/${auth.id}/words/${this.component.id}`, {
+    const updateWord = (method: string, data: Object): Promise<boolean> =>{
+      const result = fetch(`${baseUrl}users/${auth.id}/words/${this.component.id}`, {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -125,11 +141,13 @@ export default class Card extends IAuthComponent {
         if (response.status === 401) {
           throw new Error('Token invalid');
         }
+        return Promise.resolve(true);
       });
+      return result;
     };
 
-    const deleteWord = () => {
-      fetch(`${baseUrl}users/${auth.id}/words/${this.component.id}`, {
+    const deleteWord = (): Promise<boolean> => {
+      const result = fetch(`${baseUrl}users/${auth.id}/words/${this.component.id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${auth.token}`,
@@ -139,7 +157,19 @@ export default class Card extends IAuthComponent {
         if (response.status === 401) {
           throw new Error('Token invalid');
         }
+      }).then(() => {
+        const valA = Number(this.component.querySelector('.audiocall-result').textContent);
+        const valS = Number(this.component.querySelector('.sprint-result').textContent);
+        const data = {
+          difficulty: 'default',
+          optional: {
+            audiocall: { totalRight: valA, rightInRow: 0 },
+            sprint: { totalRight: valS, rightInRow: 0 },
+          },
+        };
+        return updateWord('POST', data);
       });
+      return result;
     };
 
     studied.onclick = (event) => {
@@ -148,9 +178,18 @@ export default class Card extends IAuthComponent {
         deleteWord();
       } else {
         studied.classList.add('studied');
-        const method = (difficult.classList.contains('hard')) ? 'PUT' : 'POST';
-        const data = { difficulty: 'learned', optional: {} };
-        updateWord(method, data);
+        deleteWord().then(() => {
+          const valA = Number(this.component.querySelector('.audiocall-result').textContent);
+          const valS = Number(this.component.querySelector('.sprint-result').textContent);
+          const data = {
+            difficulty: 'learned',
+            optional: {
+              audiocall: { totalRight: valA, rightInRow: 0 },
+              sprint: { totalRight: valS, rightInRow: 0 },
+            },
+          };
+          updateWord('PUT', data);
+        });
         difficult.classList.remove('hard');
       }
       event.stopImmediatePropagation();
@@ -162,9 +201,18 @@ export default class Card extends IAuthComponent {
         deleteWord();
       } else {
         difficult.classList.add('hard');
-        const method = (studied.classList.contains('studied')) ? 'PUT' : 'POST';
-        const data = { difficulty: 'hard', optional: {} };
-        updateWord(method, data);
+        deleteWord().then(() => {
+          const valA = Number(this.component.querySelector('.audiocall-result').textContent);
+          const valS = Number(this.component.querySelector('.sprint-result').textContent);
+          const data = {
+            difficulty: 'hard',
+            optional: {
+              audiocall: { totalRight: valA, rightInRow: 0 },
+              sprint: { totalRight: valS, rightInRow: 0 },
+            },
+          };
+          updateWord('PUT', data);
+        });
         studied.classList.remove('studied');
       }
       event.stopImmediatePropagation();

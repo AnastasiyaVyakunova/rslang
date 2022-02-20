@@ -1,4 +1,6 @@
-import { baseUrl, filterHardWord, maxNumTextBookSubPage, numSubPageButton } from '../common/constants';
+import {
+  baseUrl, filterHardWord, maxNumTextBookSubPage, numSubPageButton,
+} from '../common/constants';
 import Footer from '../common/Footer';
 import IApplication from '../common/IApplication';
 import Menu from '../common/Menu';
@@ -235,7 +237,8 @@ export default class TextBookPage extends IApplication {
 
     sprint.onclick = () => {
       if (check()) {
-        
+        PageLoader.exit();
+        window.location.href = `${window.location.origin}/sprint.html?groupId=${this.context.book.groupId}&pageId=${this.context.book.pageId}`;
       } else {
         sprint.classList.add('game-forbidden');
         setTimeout(() => sprint.classList.remove('game-forbidden'), 500);
@@ -244,13 +247,13 @@ export default class TextBookPage extends IApplication {
 
     audiocall.onclick = () => {
       if (check()) {
-        
+        PageLoader.exit();
+        window.location.href = `${window.location.origin}/audiocall.html?groupId=${this.context.book.groupId}&pageId=${this.context.book.pageId}`;
       } else {
         audiocall.classList.add('game-forbidden');
         setTimeout(() => audiocall.classList.remove('game-forbidden'), 500);
       }
     };
-    console.log(this.context);
   }
 
   setHandler(): void {
