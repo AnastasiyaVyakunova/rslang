@@ -25,6 +25,8 @@ export default class TextBookPage extends IApplication {
   renderCards(): Promise<boolean> {
     const { pageId, groupId } = this.context.book;
     if (groupId < 0) {
+      const gamesWrapper = document.querySelector<HTMLElement>('.game_wrapper');
+      gamesWrapper.style.display = 'none';
       return fetch(`${baseUrl}users/${this.context.user.id}/aggregatedWords?wordsPerPage=3600&filter=${filterHardWord}`, {
         method: 'GET',
         headers: {

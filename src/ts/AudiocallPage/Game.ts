@@ -6,6 +6,8 @@ import gameTemplate from '../../html/templates/audiocall-game.template.html';
 import {
   baseUrl, maxNumQuestion, maxNumTextBookGroup, maxNumTextBookSubPage,
 } from '../common/constants';
+import { addElement } from '../common/utils';
+import PageLoader from '../PageLoader';
 
 export default class Game extends IAuthComponent {
   component: HTMLElement;
@@ -14,9 +16,13 @@ export default class Game extends IAuthComponent {
 
   words: WordContent[] = [];
 
+  result: boolean[] = [];
+
   incorrectWord: WordContent[] = [];
 
   numOfQuestion: number = 0;
+
+  static soundPlaying = false;
 
   constructor() {
     super();
@@ -32,9 +38,46 @@ export default class Game extends IAuthComponent {
     this.component = data.parent.querySelector('section');
   }
 
+  private drawResult() {
+    this.component.querySelector<HTMLElement>('.overlay').style.display = 'flex';
+    const base = this.component.querySelector<HTMLElement>('.result-words');
+    let rightAnswer = 0;
+    for (let i = 0; i < this.result.length; i += 1) {
+      const wordWrapper = addElement(base, 'div', 'word-wrapper');
+      const wordSound = addElement(wordWrapper, 'div', 'word-audio');
+      const sound = addElement(wordSound, 'audio') as HTMLAudioElement;
+      sound.src = `${baseUrl}${this.words[i].audio}`;
+      const wordEnglish = addElement(wordWrapper, 'p', 'word');
+      const wordSeparator = addElement(wordWrapper, 'pre', 'word');
+      const wordTranslate = addElement(wordWrapper, 'p', 'word');
+      wordEnglish.textContent = `${this.words[i].word}`;
+      wordSeparator.textContent = ' - ';
+      wordTranslate.textContent = `${this.words[i].wordTranslate}`;
+      if (this.result[i]) {
+        wordEnglish.classList.add('correct');
+        rightAnswer += 1;
+      } else {
+        wordEnglish.classList.add('wrong');
+      }
+      wordSound.onclick = () => {
+        if (!Game.soundPlaying) {
+          Game.soundPlaying = true;
+          sound.play();
+        }
+      };
+      sound.onended = () => {
+        Game.soundPlaying = false;
+      };
+    }
+    const wrong = this.component.querySelector<HTMLElement>('.wrong-answer');
+    const correct = this.component.querySelector<HTMLElement>('.overlay').querySelector<HTMLElement>('.correct-answer');
+    correct.textContent = `${rightAnswer}`;
+    wrong.textContent = `${this.result.length - rightAnswer}`;
+  }
+
   private setContent() {
     if (this.numOfQuestion >= this.words.length) {
-      // TODO
+      this.drawResult();
       return;
     }
     const word = this.words[this.numOfQuestion];
@@ -138,12 +181,25 @@ export default class Game extends IAuthComponent {
   }
 
   setHandler(): void {
-    const buttonSudio = this.component.querySelector<HTMLElement>('.audio_sound');
+    const buttonAudio = this.component.querySelector<HTMLElement>('.audio_sound');
     const sound = this.component.querySelector<HTMLAudioElement>('#audioWord');
-    buttonSudio.onclick = () => {
+    buttonAudio.onclick = () => {
       if (sound.ended) {
         sound.play();
       }
+    };
+
+    const buttonAgain = this.component.querySelector<HTMLButtonElement>('.again');
+    const buttonMain = this.component.querySelector<HTMLButtonElement>('.main-page');
+
+    buttonAgain.onclick = () => {
+      PageLoader.exit();
+      window.location.href = `${window.location.href}`;
+    };
+
+    buttonMain.onclick = () => {
+      PageLoader.exit();
+      window.location.href = `${window.location.origin}/`;
     };
   }
 
@@ -193,7 +249,12 @@ export default class Game extends IAuthComponent {
       }, () => Promise.reject(Error))
         .then((data) => {
           const output = { difficulty: data.difficulty, optional: data.optional };
-          if (output.optional.audiocall !== undefined) {
+          if (output.optional === undefined) {
+            output.optional = {
+              audiocall: { totalRight: 1, rightInRow: 1 },
+              sprint: { totalRight: 0, rightInRow: 0 },
+            };
+          } else if (output.optional.audiocall !== undefined) {
             output.optional.audiocall.totalRight += 1;
             output.optional.audiocall.rightInRow += 1;
           } else {
@@ -246,7 +307,12 @@ export default class Game extends IAuthComponent {
       }, () => Promise.reject(Error))
         .then((data) => {
           const output = { difficulty: data.difficulty, optional: data.optional };
-          if (output.optional.audiocall !== undefined) {
+          if (output.optional === undefined) {
+            output.optional = {
+              audiocall: { totalRight: 0, rightInRow: 0 },
+              sprint: { totalRight: 0, rightInRow: 0 },
+            };
+          } else if (output.optional.audiocall !== undefined) {
             output.optional.audiocall.rightInRow = 0;
           } else {
             output.optional.audiocall = { totalRight: 0, rightInRow: 0 };
@@ -271,11 +337,13 @@ export default class Game extends IAuthComponent {
       if (target.id !== '') {
         if (target.textContent === this.words[this.numOfQuestion].wordTranslate) {
           target.style.color = '#b7f54d';
+          this.result.push(true);
           if (auth.id !== '') {
             rightAnswer(this.numOfQuestion);
           }
         } else {
           target.style.color = '#f58b4d';
+          this.result.push(false);
           if (auth.id !== '') {
             incorectAnswer(this.numOfQuestion);
           }

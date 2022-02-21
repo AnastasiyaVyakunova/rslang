@@ -12,7 +12,7 @@
 
 ::-webkit-scrollbar {
   width: 5px;
-  background-color: $color-white;
+  background-color: $color-black;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -235,7 +235,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 350px;
+        width: 30%;
         height: 400px;
         box-shadow: 3px 5px 4px rgb(0 0 0 / 20%);
         padding: 20px;
@@ -300,20 +300,106 @@
   display: flex;
   background-color: $color-black;
   color: $color-white;
-  height: 100vh;
 
   .team_content {
     margin: 0 auto;
-    width: 100%;
 
     h2 {
       display: block;
       font-family: $font-title;
       @include font(42px, 500);
-      text-align: start;
-      width: 100%;
+      text-align: center;
       margin: 50px auto 70px;
     }
+
+    .teammate-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      width: 100%;
+      margin-bottom: 50px;
+
+      .teammate {
+        background-color: $color-white;
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 10px;
+
+        .teammate_photo {
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 200px;
+          height: 230px;
+          border-radius: 50%;
+        }
+
+        .photo-a {
+          background-image: url(assets/Anastasiya-photo.jpg);
+        }
+
+        .photo-d {
+          background-image: url(assets/DD-photo.jpg);
+        }
+
+        .text-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: $color-black;
+
+          h4 {
+            font-family: $font-title;
+            @include font(38px, 500);
+            margin: 0;
+            margin-bottom: 10px;
+          }
+
+          h5 {
+            font-family: $font-text;
+            @include font(20px, 500);
+            margin: 0 0 10px 0;
+          }
+
+          a {
+            text-decoration: none;
+            color: $color-black;
+            font-family: $font-text;
+            @include font(18px, 300);
+            margin-bottom: 10px;
+            transition: 0.5s;
+          }
+
+          a:hover {
+            color: $color-yellow;
+          }
+
+          h6 {
+            font-family: $font-text;
+            @include font(18px, 500);
+            margin: 0;
+            margin-bottom: 20px;
+          }
+
+          p {
+            font-family: $font-text;
+            @include font(16px, 300);
+            width: 600px;
+            text-align: center;
+            margin: 0;
+          }
+
+        }
+
+
+        
+      }
+
+    }
+
+    
+
+
 
   }
 
