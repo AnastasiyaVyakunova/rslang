@@ -1,0 +1,122 @@
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(3,3,3,0.7);
+  z-index: 10;
+  align-items: center;
+
+  .result-wrapper {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: $color-black;
+    border: 1px solid $color-yellow;
+    color: $color-white;
+    padding: 10px 20px 10px 20px;
+
+    .result-wrapper_content {
+      display: flex;
+      flex-direction: column;
+
+      .result-words {
+        display: flex;
+        flex-direction: column;
+        height: 315px;
+        overflow-y: auto;
+        
+
+        .word-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+          width: 100%;
+
+          .word-audio {
+            background-image: url(assets/sound.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+          }
+
+          .word-audio:hover {
+            cursor: pointer;
+          }
+
+          p {
+            font-family: $font-text;
+            @include font(16px, 300);
+            color: $color-white;
+            margin: 0;
+          }
+
+          .correct {
+            color: $color-green;
+          }
+
+          .wrong {
+            color: $color-red;
+          }
+        }
+
+      }
+
+      .result-num {
+        display: flex;
+        justify-content: center;
+        column-gap: 50px;
+
+        p {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-family: $font-text;
+          @include font(24px, 300);
+        }
+
+        .w {
+          color: $color-red;
+        }
+
+        .c {
+          color: $color-green;
+        }
+
+      }
+
+      .btns-wrapper {
+        display: flex;
+        justify-content: center;
+        column-gap: 50px;
+
+        button {
+          @extend %font-btn;
+          color: $color-white;
+          height: 40px;
+          width: 100px;
+          background-color: $color-black;
+          border: 1px solid $color-white;
+          border-radius: 10px;
+          margin-top: 10px;
+          margin-bottom: 20px;
+          transition: 0.5s;
+        }
+
+        button:hover {
+          color: $color-yellow;
+          border: 1px solid $color-yellow;
+          transition: 0.5s;
+          cursor: pointer;
+        }
+        
+      }
+    }
+  }
+}
