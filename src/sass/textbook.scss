@@ -42,7 +42,8 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-
+      min-height: calc(100vh - 350px);
+      
       .card {
         position: relative;
         height: 220px;
