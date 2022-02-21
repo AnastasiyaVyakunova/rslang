@@ -14,12 +14,10 @@ export default class MainPage extends IPage {
   render(): Promise<boolean> {
     Menu.render(this.context);
     Footer.render();
-    console.log(this.context.pageName);
     return Promise.resolve(true);
   }
 
   setHandler(): void {
     Menu.setHandler(this.context);
-    console.log(this.context.pageName);
   }
 }

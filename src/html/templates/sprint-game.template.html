@@ -1,20 +1,19 @@
-<section class="audio-game">
-  <div class="wrapper audio-game-wrapper">
-    <div class="audio-game_content">
-      <div class="correct-answer">
-        <div class="correct-image"></div>
-        <p class="correct-word"></p>
-      </div>
-      <div class="audio_sound">
-        <audio id="audioWord"></audio>
-      </div>
+<section class="sprint-game">
+  <div class="wrapper sprint-game-wrapper">
+    <div class="sprint-game_content">
+      <span class="sprint_score"></span>
       <div class="words-wrapper">
-        <button id="1" class="audio-translate"></button>
-        <button id="2" class="audio-translate"></button>
-        <button id="3" class="audio-translate"></button>
-        <button id="4" class="audio-translate"></button>
-        <button id="5" class="audio-translate"></button>
+        <p class="eng-word"></p>
+        <p class="translation-word"></p>
       </div>
+      <div class="timer-wrapper">
+        <div class="timer_icon"></div>
+        <span id="timer-sec-left">60</span>
+      </div>
+    </div>
+    <div class="answers-wrapper">
+      <button class="btn-correct" id="correct">Верно</button>
+      <button class="btn-wrong" id="wrong">Неверно</button>
     </div>
     <div class="overlay">
       <div class="result-wrapper">

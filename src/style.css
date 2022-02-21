@@ -478,7 +478,7 @@ button:hover {
   line-height: 14px;
 }
 
-.header_navigation .user-name, .header_navigation .login, .audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .btns-wrapper button, .start-game .start-game-wrapper .start-game_content .play-game-btn, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct, .overlay .form-wrapper .form-wrapper_content .form-style .form_button {
+.header_navigation .user-name, .header_navigation .login, .overlay .result-wrapper .result-wrapper_content .btns-wrapper button, .start-game .start-game-wrapper .start-game_content .play-game-btn, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct, .overlay .form-wrapper .form-wrapper_content .form-style .form_button {
   font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
@@ -965,113 +965,6 @@ button:hover {
 .audio-game .audio-game-wrapper .audio-game_content .words-wrapper .wrong:hover {
   color: #ffffff;
 }
-.audio-game .audio-game-wrapper .overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(3, 3, 3, 0.7);
-  z-index: 10;
-  align-items: center;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper {
-  width: 500px;
-  height: 500px;
-  margin: 0 auto;
-  background-color: #030303;
-  border: 1px solid #f5df4d;
-  color: #ffffff;
-  padding: 10px 20px 10px 20px;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content {
-  display: flex;
-  flex-direction: column;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-words {
-  display: flex;
-  flex-direction: column;
-  height: 315px;
-  overflow-y: auto;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-  width: 100%;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .word-audio {
-  background-image: url(assets/sound.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .word-audio:hover {
-  cursor: pointer;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper p {
-  font-family: "Montserrat";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 16px;
-  color: #ffffff;
-  margin: 0;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .correct {
-  color: #b7f54d;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .wrong {
-  color: #f58b4d;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-num {
-  display: flex;
-  justify-content: center;
-  column-gap: 50px;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-num p {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Montserrat";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 24px;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-num .w {
-  color: #f58b4d;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .result-num .c {
-  color: #b7f54d;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .btns-wrapper {
-  display: flex;
-  justify-content: center;
-  column-gap: 50px;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .btns-wrapper button {
-  color: #ffffff;
-  height: 40px;
-  width: 100px;
-  background-color: #030303;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  transition: 0.5s;
-}
-.audio-game .audio-game-wrapper .overlay .result-wrapper .result-wrapper_content .btns-wrapper button:hover {
-  color: #f5df4d;
-  border: 1px solid #f5df4d;
-  transition: 0.5s;
-  cursor: pointer;
-}
 
 .textbook {
   background-color: #030303;
@@ -1373,6 +1266,114 @@ button:hover {
   background-color: #f5df4d;
   border: 1px solid #f5df4d;
   transition: 0.5s;
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(3, 3, 3, 0.7);
+  z-index: 10;
+  align-items: center;
+}
+.overlay .result-wrapper {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  background-color: #030303;
+  border: 1px solid #f5df4d;
+  color: #ffffff;
+  padding: 10px 20px 10px 20px;
+}
+.overlay .result-wrapper .result-wrapper_content {
+  display: flex;
+  flex-direction: column;
+}
+.overlay .result-wrapper .result-wrapper_content .result-words {
+  display: flex;
+  flex-direction: column;
+  height: 315px;
+  overflow-y: auto;
+}
+.overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .word-audio {
+  background-image: url(assets/sound.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .word-audio:hover {
+  cursor: pointer;
+}
+.overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper p {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
+  color: #ffffff;
+  margin: 0;
+}
+.overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .correct {
+  color: #b7f54d;
+}
+.overlay .result-wrapper .result-wrapper_content .result-words .word-wrapper .wrong {
+  color: #f58b4d;
+}
+.overlay .result-wrapper .result-wrapper_content .result-num {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+}
+.overlay .result-wrapper .result-wrapper_content .result-num p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+}
+.overlay .result-wrapper .result-wrapper_content .result-num .w {
+  color: #f58b4d;
+}
+.overlay .result-wrapper .result-wrapper_content .result-num .c {
+  color: #b7f54d;
+}
+.overlay .result-wrapper .result-wrapper_content .btns-wrapper {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+}
+.overlay .result-wrapper .result-wrapper_content .btns-wrapper button {
+  color: #ffffff;
+  height: 40px;
+  width: 100px;
+  background-color: #030303;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+.overlay .result-wrapper .result-wrapper_content .btns-wrapper button:hover {
+  color: #f5df4d;
+  border: 1px solid #f5df4d;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {

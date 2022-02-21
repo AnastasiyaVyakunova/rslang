@@ -55,7 +55,7 @@ export interface WordContent extends Content {
   wordTranslate: string
 }
 
-export interface AudiocallContent extends Content {
+export interface GameContent extends Content {
   book: TextBookContext;
   replacement: HTMLElement;
   parent: HTMLElement;
