@@ -268,17 +268,17 @@ select {
  * 2. Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-html [type='button'],
-[type='reset'],
-[type='submit'] {
+html [type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button;
   /* 2 */
 }
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type=button],
+[type=reset],
+[type=submit] {
   /**
    * Remove the inner border and padding in Firefox.
    */
@@ -287,16 +287,16 @@ button,
    */
 }
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -311,8 +311,8 @@ input {
  * 1. Add the correct box sizing in IE 10-.
  * 2. Remove the padding in IE 10-.
  */
-[type='checkbox'],
-[type='radio'] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -322,8 +322,8 @@ input {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -331,7 +331,7 @@ input {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type=search] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -340,8 +340,7 @@ input {
    * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
    */
 }
-[type='search']::-webkit-search-cancel-button,
-[type='search']::-webkit-search-decoration {
+[type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -472,20 +471,15 @@ button:hover {
 }
 
 .header_navigation a {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
   line-height: 14px;
 }
 
-.header_navigation .user-name,
-.header_navigation .login,
-.start-game .start-game-wrapper .start-game_content .play-game-btn,
-.sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong,
-.sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct,
-.overlay .form-wrapper .form-wrapper_content .form-style .form_button {
-  font-family: 'Montserrat';
+.header_navigation .user-name, .header_navigation .login, .start-game .start-game-wrapper .start-game_content .play-game-btn, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-wrong, .sprint-game .sprint-game-wrapper .answers-wrapper .btn-correct, .overlay .form-wrapper .form-wrapper_content .form-style .form_button {
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -522,13 +516,9 @@ button:hover {
   margin-bottom: 20px;
   align-items: center;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-switch-wrapper
-  .form_switch-button {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .form_switch-button {
   color: #ffffff;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
@@ -539,11 +529,7 @@ button:hover {
   height: 60px;
   transition: 0.5s;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-switch-wrapper
-  .form_switch-button:hover {
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .form_switch-button:hover {
   color: #f5df4d;
   transition: 0.5s;
 }
@@ -556,13 +542,8 @@ button:hover {
   height: 25px;
   transition: 0.5s;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-switch-wrapper
-  .form_exit:hover {
-  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg)
-    brightness(308%) contrast(92%);
+.overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .form_exit:hover {
+  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
   transition: 0.5s;
 }
 .overlay .form-wrapper .form-wrapper_content .form-switch-wrapper .select {
@@ -588,17 +569,11 @@ button:hover {
   position: absolute;
   left: 0;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  .title-input
-  span
-  span {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input span span {
   position: absolute;
   top: 10px;
   z-index: 1;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 17px;
   font-style: normal;
   font-weight: 300;
@@ -608,13 +583,8 @@ button:hover {
   transition: 0.5s;
   -webkit-transition: 0.5s;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  .title-input
-  span:before {
-  content: '';
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input span:before {
+  content: "";
   width: 0%;
   height: 1px;
   background-color: #f5df4d;
@@ -625,13 +595,8 @@ button:hover {
   transition: 0.5s;
   -webkit-transition: 0.5s;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  .title-input
-  span:after {
-  content: '';
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input span:after {
+  content: "";
   width: 0%;
   height: 1px;
   background-color: #f5df4d;
@@ -642,20 +607,10 @@ button:hover {
   transition: 0.5s;
   -webkit-transition: 0.5s;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  .title-input
-  .wrong:before {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input .wrong:before {
   background-color: #e10505;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  .title-input
-  .wrong:after {
+.overlay .form-wrapper .form-wrapper_content .form-style .title-input .wrong:after {
   background-color: #e10505;
 }
 .overlay .form-wrapper .form-wrapper_content .form-style input {
@@ -668,7 +623,7 @@ button:hover {
   border-bottom: 1px solid #ffffff;
   background-color: transparent;
   color: #ffffff;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -677,51 +632,19 @@ button:hover {
 .overlay .form-wrapper .form-wrapper_content .form-style input:focus {
   outline: 0;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  input:required
-  + span
-  span,
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  input:focus
-  + span
-  span {
+.overlay .form-wrapper .form-wrapper_content .form-style input:required + span span,
+.overlay .form-wrapper .form-wrapper_content .form-style input:focus + span span {
   position: absolute;
   cursor: initial;
   top: -25px;
   color: #f5df4d;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  input:required
-  + span:before,
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  input:focus
-  + span:before {
+.overlay .form-wrapper .form-wrapper_content .form-style input:required + span:before,
+.overlay .form-wrapper .form-wrapper_content .form-style input:focus + span:before {
   width: 50%;
 }
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  input:required
-  + span:after,
-.overlay
-  .form-wrapper
-  .form-wrapper_content
-  .form-style
-  input:focus
-  + span:after {
+.overlay .form-wrapper .form-wrapper_content .form-style input:required + span:after,
+.overlay .form-wrapper .form-wrapper_content .form-style input:focus + span:after {
   width: 50%;
 }
 .overlay .form-wrapper .form-wrapper_content .form-style .form_button {
@@ -762,7 +685,7 @@ button:hover {
 }
 .sprint-game .sprint-game-wrapper .sprint-game_content .sprint_score {
   display: block;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 50px;
   font-style: normal;
   font-weight: 500;
@@ -777,24 +700,16 @@ button:hover {
   align-items: center;
   text-align: center;
 }
-.sprint-game
-  .sprint-game-wrapper
-  .sprint-game_content
-  .words-wrapper
-  .eng-word {
-  font-family: 'Montserrat';
+.sprint-game .sprint-game-wrapper .sprint-game_content .words-wrapper .eng-word {
+  font-family: "Montserrat";
   font-size: 60px;
   font-style: normal;
   font-weight: 300;
   line-height: 60px;
   margin: 30px 0 30px 0;
 }
-.sprint-game
-  .sprint-game-wrapper
-  .sprint-game_content
-  .words-wrapper
-  .translation-word {
-  font-family: 'Montserrat';
+.sprint-game .sprint-game-wrapper .sprint-game_content .words-wrapper .translation-word {
+  font-family: "Montserrat";
   font-size: 60px;
   font-style: normal;
   font-weight: 300;
@@ -805,11 +720,7 @@ button:hover {
 .sprint-game .sprint-game-wrapper .sprint-game_content .timer-wrapper {
   display: flex;
 }
-.sprint-game
-  .sprint-game-wrapper
-  .sprint-game_content
-  .timer-wrapper
-  .timer_icon {
+.sprint-game .sprint-game-wrapper .sprint-game_content .timer-wrapper .timer_icon {
   background-image: url(assets/timer.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -817,7 +728,7 @@ button:hover {
   height: 60px;
 }
 .sprint-game .sprint-game-wrapper .sprint-game_content .timer-wrapper span {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 50px;
   font-style: normal;
   font-weight: 500;
@@ -890,17 +801,7 @@ button:hover {
   position: absolute;
   height: calc(100vh - 80px);
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    #030303 0%,
-    rgba(3, 3, 3, 0.8351715686) 9%,
-    rgba(3, 3, 3, 0.5606617647) 19%,
-    rgba(3, 3, 3, 0.3757878151) 46%,
-    rgba(3, 3, 3, 0.5410539216) 66%,
-    rgba(3, 3, 3, 0.7987570028) 78%,
-    #030303 92%,
-    #030303 100%
-  );
+  background: linear-gradient(90deg, #030303 0%, rgba(3, 3, 3, 0.8351715686) 9%, rgba(3, 3, 3, 0.5606617647) 19%, rgba(3, 3, 3, 0.3757878151) 46%, rgba(3, 3, 3, 0.5410539216) 66%, rgba(3, 3, 3, 0.7987570028) 78%, #030303 92%, #030303 100%);
 }
 .start-game .start-game-wrapper .start-game_content {
   display: flex;
@@ -912,7 +813,7 @@ button:hover {
   text-align: center;
 }
 .start-game .start-game-wrapper .start-game_content h2 {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -921,7 +822,7 @@ button:hover {
   margin: 20px 0;
 }
 .start-game .start-game-wrapper .start-game_content p {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -937,18 +838,14 @@ button:hover {
   background-color: transparent;
   border: 0;
   color: #f5df4d;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
   line-height: 60px;
   color: #ffffff;
 }
-.start-game
-  .start-game-wrapper
-  .start-game_content
-  .choose-level
-  .level-chosen {
+.start-game .start-game-wrapper .start-game_content .choose-level .level-chosen {
   border-bottom: 1px solid #f5df4d;
 }
 .start-game .start-game-wrapper .start-game_content .play-game-btn {
@@ -987,17 +884,43 @@ button:hover {
   align-items: center;
   width: 100%;
 }
+.audio-game .audio-game-wrapper .audio-game_content .correct-answer {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.audio-game .audio-game-wrapper .audio-game_content .correct-answer .correct-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 150px;
+  border-radius: 50%;
+}
+.audio-game .audio-game-wrapper .audio-game_content .correct-answer p {
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  color: #f5df4d;
+  text-transform: lowercase;
+}
 .audio-game .audio-game-wrapper .audio-game_content .audio_sound {
   background-image: url(assets/sound.png);
+  background-size: contain;
   width: 100px;
   height: 100px;
   transition: 0.5s;
 }
 .audio-game .audio-game-wrapper .audio-game_content .audio_sound:hover {
   cursor: pointer;
-  filter: invert(81%) sepia(38%) saturate(625%) hue-rotate(6deg)
-    brightness(308%) contrast(108%);
+  filter: invert(81%) sepia(38%) saturate(625%) hue-rotate(6deg) brightness(308%) contrast(108%);
   transition: 0.5s;
+}
+.audio-game .audio-game-wrapper .audio-game_content .mini {
+  width: 50px;
+  height: 50px;
 }
 .audio-game .audio-game-wrapper .audio-game_content .words-wrapper {
   display: flex;
@@ -1006,13 +929,9 @@ button:hover {
   flex-wrap: wrap;
   margin-top: 80px;
 }
-.audio-game
-  .audio-game-wrapper
-  .audio-game_content
-  .words-wrapper
-  .audio-translate {
+.audio-game .audio-game-wrapper .audio-game_content .words-wrapper .audio-translate {
   background-color: transparent;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 24px;
   font-style: normal;
   font-weight: 300;
@@ -1024,11 +943,7 @@ button:hover {
   text-transform: lowercase;
   transition: 0.5s;
 }
-.audio-game
-  .audio-game-wrapper
-  .audio-game_content
-  .words-wrapper
-  .audio-translate:hover {
+.audio-game .audio-game-wrapper .audio-game_content .words-wrapper .audio-translate:hover {
   color: #f5df4d;
   transition: 0.5s;
 }
@@ -1038,11 +953,7 @@ button:hover {
   color: #ffffff;
   transition: 0.5s;
 }
-.audio-game
-  .audio-game-wrapper
-  .audio-game_content
-  .words-wrapper
-  .correct:hover {
+.audio-game .audio-game-wrapper .audio-game_content .words-wrapper .correct:hover {
   color: #ffffff;
 }
 .audio-game .audio-game-wrapper .audio-game_content .words-wrapper .wrong {
@@ -1051,11 +962,7 @@ button:hover {
   color: #ffffff;
   transition: 0.5s;
 }
-.audio-game
-  .audio-game-wrapper
-  .audio-game_content
-  .words-wrapper
-  .wrong:hover {
+.audio-game .audio-game-wrapper .audio-game_content .words-wrapper .wrong:hover {
   color: #ffffff;
 }
 
@@ -1081,7 +988,7 @@ button:hover {
   color: #ffffff;
   transition: 0.5s;
   background-color: transparent;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
@@ -1130,7 +1037,7 @@ button:hover {
   z-index: 2;
 }
 .textbook .textbook_content .textbook_cards .card .card_front .card_content h2 {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
@@ -1140,7 +1047,7 @@ button:hover {
   z-index: 2;
 }
 .textbook .textbook_content .textbook_cards .card .card_front .card_content h3 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -1148,14 +1055,11 @@ button:hover {
   margin: 0;
   z-index: 2;
 }
-.textbook
-  .textbook_content
-  .textbook_cards
-  .card
-  .card_front
-  .card_content
-  .card_sound {
-  background-image: url(assets/sound.png);
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper button {
   width: 32px;
   height: 32px;
   background-size: contain;
@@ -1163,21 +1067,51 @@ button:hover {
   border: none;
   background-color: transparent;
   z-index: 2;
+  margin: 0 12px;
   transition: 0.5s;
 }
-.textbook
-  .textbook_content
-  .textbook_cards
-  .card
-  .card_front
-  .card_content
-  .card_sound:hover {
-  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg)
-    brightness(308%) contrast(92%);
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .card_sound {
+  background-image: url(assets/sound.png);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .add-studied {
+  background-image: url(assets/checkmark.png);
+  filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .add-difficult {
+  background-image: url(assets/plus.png);
+  filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .card_sound:hover {
+  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
   transition: 0.5s;
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .studied {
+  filter: invert(81%) sepia(92%) saturate(350%) hue-rotate(23deg) brightness(97%) contrast(97%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .btn-card-wrapper .hard {
+  filter: invert(71%) sepia(35%) saturate(2405%) hue-rotate(325deg) brightness(98%) contrast(96%);
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .game-result {
+  display: none;
+  z-index: 2;
+  color: #ffffff;
+  width: 100%;
+  justify-content: space-around;
+}
+.textbook .textbook_content .textbook_cards .card .card_front .card_content .game-result p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14px;
+  margin: 0;
+  z-index: 2;
 }
 .textbook .textbook_content .textbook_cards .card .card_front::before {
-  content: '';
+  content: "";
   background: rgba(0, 0, 0, 0.6);
   display: block;
   position: absolute;
@@ -1201,7 +1135,7 @@ button:hover {
   padding: 5px 10px;
 }
 .textbook .textbook_content .textbook_cards .card .card_back h3 {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -1210,7 +1144,7 @@ button:hover {
   margin: 0 0 7px 0;
 }
 .textbook .textbook_content .textbook_cards .card .card_back p {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -1243,7 +1177,7 @@ button:hover {
   width: 35px;
   height: 24px;
   color: #ffffff;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
@@ -1253,8 +1187,7 @@ button:hover {
 .textbook .textbook_content .pagination_wrapper .pagination .prev-button,
 .textbook .textbook_content .pagination_wrapper .pagination .next-button {
   background-image: url(assets/arrow.png);
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
-    brightness(102%) contrast(102%);
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1263,8 +1196,7 @@ button:hover {
 }
 .textbook .textbook_content .pagination_wrapper .pagination .prev-button:hover,
 .textbook .textbook_content .pagination_wrapper .pagination .next-button:hover {
-  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg)
-    brightness(108%) contrast(92%);
+  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(108%) contrast(92%);
 }
 .textbook .textbook_content .pagination_wrapper .pagination .active,
 .textbook .textbook_content .pagination_wrapper .pagination button:hover {
@@ -1285,7 +1217,7 @@ button:hover {
 }
 .textbook .textbook_content .game_wrapper h2 {
   display: block;
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -1294,7 +1226,7 @@ button:hover {
   margin: 0;
 }
 .textbook .textbook_content .game_wrapper p {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -1315,14 +1247,19 @@ button:hover {
   transition: 0.5s;
 }
 .textbook .textbook_content .game_wrapper .game_content .game h3 {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 18px;
   text-align: center;
 }
-.textbook .textbook_content .game_wrapper .game_content .game:hover {
+.textbook .textbook_content .game_wrapper .game_content .game-forbidden {
+  color: #030303;
+  background: #f58b4d;
+  border: 1px solid #f58b4d;
+}
+.textbook .textbook_content .game_wrapper .game_content .game:hover:not(.game-forbidden) {
   cursor: pointer;
   color: #030303;
   background-color: #f5df4d;
@@ -1382,7 +1319,7 @@ button:hover {
   display: block;
   width: 180px;
   text-align: center;
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 33px;
   font-style: normal;
   font-weight: 500;
@@ -1423,13 +1360,11 @@ button:hover {
   background-size: contain;
   width: 24px;
   height: 24px;
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
-    brightness(102%) contrast(102%);
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
   transition: 0.5s;
 }
 .header_navigation .logout:hover {
-  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg)
-    brightness(108%) contrast(92%);
+  filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(108%) contrast(92%);
 }
 .header_navigation .dropdown {
   display: none;
@@ -1452,6 +1387,7 @@ button:hover {
 }
 .header_navigation .dropdown li .d-words {
   line-height: 24px;
+  display: none;
 }
 .header_navigation li:hover > .dropdown {
   display: inherit;
@@ -1479,7 +1415,7 @@ button:hover {
   display: block;
   width: 880px;
   color: #ffffff;
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -1491,7 +1427,7 @@ button:hover {
   display: block;
   width: 560px;
   color: #ffffff;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -1501,7 +1437,7 @@ button:hover {
 }
 
 .welcome:after {
-  content: '';
+  content: "";
   background: rgba(0, 0, 0, 0.6);
   display: block;
   position: absolute;
@@ -1521,7 +1457,7 @@ button:hover {
 }
 .advantages .advantages_content h2 {
   display: block;
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 42px;
   font-style: normal;
   font-weight: 500;
@@ -1565,7 +1501,7 @@ button:hover {
   background-image: url(assets/statistic-icon.png);
 }
 .advantages .advantages_content .layout-3-column .advantage h4 {
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
@@ -1573,7 +1509,7 @@ button:hover {
   margin: 20px;
 }
 .advantages .advantages_content .layout-3-column .advantage p {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -1584,11 +1520,7 @@ button:hover {
   filter: grayscale(0);
   transition: filter 0.5s;
 }
-.advantages
-  .advantages_content
-  .layout-3-column
-  .advantage:hover
-  .advantage_icon {
+.advantages .advantages_content .layout-3-column .advantage:hover .advantage_icon {
   filter: drop-shadow(2px 4px 6px rgba(3, 3, 3, 0.5));
   transition: filter 0.5s;
 }
@@ -1605,7 +1537,7 @@ button:hover {
 }
 .team .team_content h2 {
   display: block;
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 42px;
   font-style: normal;
   font-weight: 500;
@@ -1641,7 +1573,7 @@ button:hover {
 .footer .footer_content .github-links .git {
   display: block;
   color: #ffffff;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -1654,7 +1586,7 @@ button:hover {
 }
 .footer .footer_content p {
   color: #ffffff;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 14px;
   font-style: normal;
   font-weight: 300;

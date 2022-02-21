@@ -15,6 +15,8 @@ export default class SprintPage extends IPage {
     super();
     this.context = ctx;
 
+    console.log(this.context);
+
     // attach handler for level selection
     const levelSelectorBlocks = document.querySelectorAll(
       '#lev-1, #lev-2, #lev-3, #lev-4, #lev-5, #lev-6',

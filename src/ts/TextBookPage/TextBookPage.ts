@@ -1,12 +1,15 @@
-import { baseUrl, maxNumTextBookSubPage, numSubPageButton } from '../common/constants';
+import {
+  baseUrl, filterHardWord, maxNumTextBookSubPage, numSubPageButton,
+} from '../common/constants';
 import Footer from '../common/Footer';
 import IApplication from '../common/IApplication';
 import Menu from '../common/Menu';
-import { PageContext } from '../common/types';
+import { PageContext, resetAuthContext, WordContent } from '../common/types';
 import Card from './Card';
 import pagination from '../../html/templates/pagination.template.html';
 import levelsTemplate from '../../html/templates/levels.template.html';
 import { addFragment } from '../common/utils';
+import PageLoader from '../PageLoader';
 
 export default class TextBookPage extends IApplication {
   context: PageContext;
@@ -21,6 +24,32 @@ export default class TextBookPage extends IApplication {
 
   renderCards(): Promise<boolean> {
     const { pageId, groupId } = this.context.book;
+    if (groupId < 0) {
+      return fetch(`${baseUrl}users/${this.context.user.id}/aggregatedWords?wordsPerPage=3600&filter=${filterHardWord}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${this.context.user.token}`,
+          'Accept': 'application/json',
+        },
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error('Token invalid');
+        }
+        return response.json();
+      }, () => Promise.reject(Error))
+        .then((data) => {
+          for (let i = 0; i < data[0].paginatedResults.length; i += 1) {
+            this.cards.push(new Card());
+            // fix server bugs with aggregate req
+            const wordData = data[0].paginatedResults[i] as WordContent;
+            // eslint-disable-next-line no-underscore-dangle
+            wordData.id = data[0].paginatedResults[i]._id;
+            this.cards[this.cards.length - 1].render(wordData);
+            this.cards[this.cards.length - 1].authRender(this.context.user);
+          }
+          return Promise.resolve(true);
+        }, () => Promise.reject(Error));
+    }
     return fetch(`${baseUrl}words?group=${groupId}&page=${pageId}`, {
       method: 'GET',
       headers: {
@@ -31,6 +60,7 @@ export default class TextBookPage extends IApplication {
         for (let i = 0; i < data.length; i += 1) {
           this.cards.push(new Card());
           this.cards[this.cards.length - 1].render(data[i]);
+          this.cards[this.cards.length - 1].authRender(this.context.user);
         }
         return Promise.resolve(true);
       }, () => Promise.reject(Error));
@@ -40,8 +70,15 @@ export default class TextBookPage extends IApplication {
     const { pageId, groupId } = this.context.book;
 
     const levelsWrapper = document.querySelector('.levels_wrapper');
-    addFragment(levelsWrapper, '#pagination', levelsTemplate);
+    addFragment(levelsWrapper, '#levels', levelsTemplate);
     const levels = levelsWrapper.querySelectorAll('.level');
+    if (this.context.user.id !== '') {
+      (levels[levels.length - 1] as HTMLElement).hidden = false;
+    }
+    if (groupId < 0) {
+      (levels[levels.length - 1] as HTMLElement).classList.add('active');
+      return;
+    }
     (levels[groupId] as HTMLElement).classList.add('active');
 
     const paginationWrapper = document.querySelector('.pagination_wrapper');
@@ -90,16 +127,31 @@ export default class TextBookPage extends IApplication {
     }
   }
 
+  private redirect() {
+    this.context.user = resetAuthContext();
+    this.context.book.groupId = 0;
+    PageLoader.exit();
+    window.location.href = `${window.location.origin}/`;
+  }
+
   render(): Promise<boolean> {
     Menu.render(this.context);
     Footer.render();
     this.renderPagination();
-    return this.renderCards();
+    return this.renderCards().catch(() => {
+      this.redirect();
+      return Promise.reject(Error);
+    });
   }
 
   setHandlerCards(): void {
     for (let i = 0; i < this.cards.length; i += 1) {
       this.cards[i].setHandler();
+      try {
+        this.cards[i].setAuthHandler(this.context.user);
+      } catch (er) {
+        this.redirect();
+      }
     }
   }
 
@@ -132,10 +184,16 @@ export default class TextBookPage extends IApplication {
           this.context.book.groupId = 5;
           this.context.book.pageId = 0;
           break;
+        case 'groupId7':
+          this.context.book.groupId = -1;
+          this.context.book.pageId = 0;
+          break;
         default: break;
       }
       this.redraw();
     };
+    if (this.context.book.groupId < 0) return;
+
     const paginationWrapper: HTMLElement = document.querySelector('.pagination');
     paginationWrapper.onclick = (event) => {
       const page: Element = event.target as Element;
@@ -160,9 +218,48 @@ export default class TextBookPage extends IApplication {
     };
   }
 
+  setHandlerGames(): void {
+    const sprint: HTMLElement = document.querySelector('#sprintRef');
+    const audiocall: HTMLElement = document.querySelector('#audiocallRef');
+
+    const check = () => {
+      const cards = document.querySelectorAll<HTMLElement>('.card');
+      let canPlay = false;
+      cards.forEach((card) => {
+        const learned: HTMLElement = card.querySelector('.add-studied');
+        const hard: HTMLElement = card.querySelector('.add-difficult');
+        if (!hard.classList.contains('hard') && !learned.classList.contains('studied')) {
+          canPlay = true;
+        }
+      });
+      return canPlay;
+    };
+
+    sprint.onclick = () => {
+      if (check()) {
+        PageLoader.exit();
+        window.location.href = `${window.location.origin}/sprint.html?groupId=${this.context.book.groupId}&pageId=${this.context.book.pageId}`;
+      } else {
+        sprint.classList.add('game-forbidden');
+        setTimeout(() => sprint.classList.remove('game-forbidden'), 500);
+      }
+    };
+
+    audiocall.onclick = () => {
+      if (check()) {
+        PageLoader.exit();
+        window.location.href = `${window.location.origin}/audiocall.html?groupId=${this.context.book.groupId}&pageId=${this.context.book.pageId}`;
+      } else {
+        audiocall.classList.add('game-forbidden');
+        setTimeout(() => audiocall.classList.remove('game-forbidden'), 500);
+      }
+    };
+  }
+
   setHandler(): void {
     this.setHandlerCards();
     this.setHandlerPagination();
+    this.setHandlerGames();
     Menu.setHandler(this.context);
   }
 

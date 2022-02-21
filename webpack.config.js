@@ -43,7 +43,7 @@ const baseConfig = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/html/main.html'),
-      filename: 'main.html',
+      filename: 'index.html',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/html/sprint.html'),
