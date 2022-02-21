@@ -1,5 +1,11 @@
 import { PageName } from './constants';
 
+export type GameAnswer = {
+  word: string;
+  correctTranslation: string;
+  isAnsweredCorectly: boolean;
+};
+
 export type TextBookContext = {
   pageId: number;
   groupId: number;
@@ -32,29 +38,29 @@ export type PageContext = {
 export interface Content {}
 
 export interface WordContent extends Content {
-  id: string,
-  group: number,
-  page: number,
-  word: string,
-  image: string,
-  audio: string,
-  audioMeaning: string,
-  audioExample: string,
-  textMeaning: string,
-  textExample: string,
-  transcription: string,
-  textExampleTranslate: string,
-  textMeaningTranslate: string,
-  wordTranslate: string
+  id: string;
+  group: number;
+  page: number;
+  word: string;
+  image: string;
+  audio: string;
+  audioMeaning: string;
+  audioExample: string;
+  textMeaning: string;
+  textExample: string;
+  transcription: string;
+  textExampleTranslate: string;
+  textMeaningTranslate: string;
+  wordTranslate: string;
 }
 
 export interface SigninContext {
-  email: string,
-  password: string
+  email: string;
+  password: string;
 }
 
 export interface SignupContext {
-  name: string,
-  email: string,
-  password: string
+  name: string;
+  email: string;
+  password: string;
 }

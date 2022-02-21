@@ -1,6 +1,10 @@
 import domFactory from './domFactory';
 
-const dummyData = [
+import ScoreView from './scoreView';
+
+import { GameAnswer } from '../common/types';
+
+const recivedData = [
   {
     id: '5e9f5ee35eb9e72bc21af70c',
     group: 1,
@@ -350,10 +354,15 @@ export default class SpritGameView {
   domNode: HTMLElement;
 
   private gameTimer = 60;
+
   private intervalIdentifer: any;
+
   private gameScore = 0;
+
   private curentQuestionIndex = 0;
-  private gameAnswers: any[];
+
+  private gameAnswers: Array<GameAnswer> = [];
+
   private currentCorrectAnswer: boolean;
 
   constructor() {
@@ -384,7 +393,7 @@ export default class SpritGameView {
       `,
     });
 
-    console.log(dummyData.length);
+    console.log(recivedData.length);
     this.startGame();
 
     this.generateQuestion();
@@ -406,7 +415,10 @@ export default class SpritGameView {
     console.log('correct answer btn triggereed');
 
     if (this.currentCorrectAnswer === true) {
+      this.recordAnswer(true);
       this.gameScore += 1;
+    } else {
+      this.recordAnswer(false);
     }
 
     this.rerenderScore();
@@ -418,9 +430,11 @@ export default class SpritGameView {
     console.log('wrong answer btn triggereed');
 
     if (this.currentCorrectAnswer === false) {
+      this.recordAnswer(true);
       this.gameScore += 1;
+    } else {
+      this.recordAnswer(false);
     }
-
     this.rerenderScore();
 
     this.generateQuestion();
@@ -446,16 +460,22 @@ export default class SpritGameView {
   stopGame() {
     clearInterval(this.intervalIdentifer);
     // execute statistics
+    this.showFinishScorePage();
   }
 
   generateQuestion() {
+    if (this.curentQuestionIndex >= recivedData.length - 1) {
+      this.stopGame();
+      return;
+    }
+
     const wordToTranslate = this.domNode.querySelector('.eng-word');
     const translationProposal = this.domNode.querySelector('.translation-word');
 
     const makeCorrectQAPair = () => {
-      wordToTranslate.innerHTML = dummyData[this.curentQuestionIndex].word;
+      wordToTranslate.innerHTML = recivedData[this.curentQuestionIndex].word;
       translationProposal.innerHTML =
-        dummyData[this.curentQuestionIndex].wordTranslate;
+        recivedData[this.curentQuestionIndex].wordTranslate;
 
       this.currentCorrectAnswer = true;
 
@@ -464,9 +484,9 @@ export default class SpritGameView {
     };
 
     const makeWrongQAPair = () => {
-      wordToTranslate.innerHTML = dummyData[this.curentQuestionIndex].word;
+      wordToTranslate.innerHTML = recivedData[this.curentQuestionIndex].word;
       translationProposal.innerHTML =
-        dummyData[this.getRandomInt(0, dummyData.length)].wordTranslate;
+        recivedData[this.getRandomInt(0, recivedData.length)].wordTranslate;
 
       this.currentCorrectAnswer = false;
 
@@ -490,7 +510,17 @@ export default class SpritGameView {
     scoreCounter.innerHTML = this.gameScore.toString();
   }
 
-  // async queryQuestions() {
-  //   const resolvedRes=
-  // }
+  showFinishScorePage() {
+    this.domNode.replaceChildren(new ScoreView(this.gameAnswers).domNode);
+  }
+
+  recordAnswer(recivedUserAnswer: boolean) {
+    const answerRecord: GameAnswer = {
+      word: recivedData[this.curentQuestionIndex].word,
+      correctTranslation: recivedData[this.curentQuestionIndex].wordTranslate,
+      isAnsweredCorectly: recivedUserAnswer,
+    };
+
+    this.gameAnswers.push(answerRecord);
+  }
 }
