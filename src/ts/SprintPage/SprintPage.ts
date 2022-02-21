@@ -15,6 +15,8 @@ export default class SprintPage extends IPage {
     super();
     this.context = ctx;
 
+    // this.stateSelector = ctx.user;
+
     console.log(this.context);
 
     // attach handler for level selection
@@ -84,5 +86,9 @@ export default class SprintPage extends IPage {
   setHandler(): void {
     Menu.setHandler(this.context);
     // console.log(this.context.pageName);
+  }
+
+  switchStateTo(recivedState) {
+    //
   }
 }
