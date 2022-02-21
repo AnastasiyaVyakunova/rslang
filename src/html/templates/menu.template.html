@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <nav class="header_navigation">
+    <ul class="navigation">
+      <li class="left-item"><a href="#"></a></li>
+      <li class="left-item"><a href="/">Главная</a></li>
+      <li class="left-item"><a class="textbook-link" href="textbook.html">Учебник</a>
+        <ul class="dropdown">
+          <li><a href="textbook.html" id="groupId1">Раздел 1</a></li>
+          <li><a href="textbook.html" id="groupId2">Раздел 2</a></li>
+          <li><a href="textbook.html" id="groupId3">Раздел 3</a></li>
+          <li><a href="textbook.html" id="groupId4">Раздел 4</a></li>
+          <li><a href="textbook.html" id="groupId5">Раздел 5</a></li>
+          <li><a href="textbook.html" id="groupId6">Раздел 6</a></li>
+          <li><a class="d-words" href="textbook.html" id="groupId7">Сложные слова</a></li>
+        </ul>
+      </li>
+      <li class="right-item">
+        <button class="login">Вход</button>
+        <p class="user-name" hidden></p>
+        <button class="logout" hidden></button>
+      </li>
+      <li class="right-item"><a href="#">Статистика</a></li>
+      <li class="right-item"><a>Мини-игры</a>
+        <ul class="dropdown">
+          <li><a href="audiocall.html">Аудиовызов</a></li>
+          <li><a href="sprint.html">Спринт</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a class="logo" href="/">RS Lang</a>
+  </nav> 
+</div>
+<div class="overlay">
+  <div class="form-wrapper">
+    <div class="form-wrapper_content">
+      <div class="form-switch-wrapper">
+        <button class="form_switch-button auth select" type="button">Авторизация</button>
+        <button class="form_switch-button reg" type="button">Регистрация</button>
+        <button class="form_exit" type="button"></button>
+      </div>
+      <form class="form-style" action="" method="">
+        <label id="label0" class="title-input" hidden>
+          <input class="form_name" type="text" name="reg_name" optional >
+        <span class="line-name"><span>Имя</span></span></label>
+        <label id="label1" class="title-input">
+          <input class="form_email" type="email" name="auth_email" optional >
+        <span class="line-email"><span>E-mail</span></span></label>
+        <label id="label2" class="title-input">
+          <input class="form_pswrd" type="password" name="auth_pass" optional >
+        <span class="line-pswrd"><span>Пароль</span></span></label>
+        <label id="label3" class="title-input" hidden>
+          <input class="form_approve" type="password" name="reg_pass" optional >
+        <span class="line-approve"><span>Подтверждение прароля</span></span></label>
+        <button class="form_button login-btn" type="button" name="form_auth_submit">Войти</button>
+      </form>
+    </div>
+  </div>
+</div>

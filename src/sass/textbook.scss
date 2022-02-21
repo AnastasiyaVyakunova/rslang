@@ -1,0 +1,341 @@
+.textbook {
+  background-color: $color-black;
+
+  .textbook_content {
+    margin: 0 auto;
+    padding: 20px;
+    height: 100%;
+
+    .levels_wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0 35px 0;
+
+      .level {
+        border: 1px solid $color-white;
+        border-radius: 10px;
+        width: 100px;
+        height: 50px;
+        color: $color-white;
+        transition: 0.5s;
+        background-color: transparent;
+        font-family: $font-text;
+        @include font(16px, 300);
+        text-align: center;
+        
+      }
+
+      .level:hover,
+      .active {
+        cursor: pointer;
+        color: $color-black;
+        border: 1px solid $color-yellow;
+        background-color: $color-yellow;
+        transition: 0.5s;
+      }
+
+    }
+
+    .textbook_cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      min-height: calc(100vh - 350px);
+      
+      .card {
+        position: relative;
+        height: 220px;
+        width: 350px;
+        perspective: 1000px;
+
+        .card_front {
+          position: absolute;
+          backface-visibility: hidden;
+          transition: 1s;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          z-index: 0;
+
+          .card_content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            height: 100%;
+            width: 100%;
+            color: $color-white;
+            z-index: 2;
+
+            h2 {
+              font-family: $font-title;
+              @include font(28px, 700);
+              letter-spacing: 2px;
+              margin: 0;
+              z-index: 2;
+            }
+  
+            h3 {
+              font-family: $font-text;
+              @include font(18px, 500);
+              margin: 0;
+              z-index: 2;
+            }
+
+            .btn-card-wrapper {
+              display: flex;
+              justify-content: space-around;
+
+              button {
+                width: 32px;
+                height: 32px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                border: none;
+                background-color: transparent;
+                z-index: 2;
+                margin: 0 12px;
+                transition: 0.5s;
+              }
+
+              .card_sound {
+                background-image: url(assets/sound.png);
+              }
+
+              .add-studied {
+                background-image: url(assets/checkmark.png);
+                filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+              }
+
+              .add-difficult {
+                background-image: url(assets/plus.png);
+                filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(167deg) brightness(106%) contrast(101%);
+              }
+  
+              .card_sound:hover {
+                filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(308%) contrast(92%);
+                transition: 0.5s;
+              }
+
+              .studied {
+                filter: invert(81%) sepia(92%) saturate(350%) hue-rotate(23deg) brightness(97%) contrast(97%);
+              }
+
+              .hard {
+                filter: invert(71%) sepia(35%) saturate(2405%) hue-rotate(325deg) brightness(98%) contrast(96%);
+              }
+
+            }
+
+            .game-result {
+              display: none;
+              z-index: 2;
+              color: $color-white;
+              width: 100%;
+              justify-content: space-around;
+ 
+              p {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: $font-text;
+                @include font(14px, 300);
+                margin: 0;
+                z-index: 2;
+
+              }
+            }
+
+          }
+
+        }
+
+        .card_front::before {
+          content: '';
+          background: rgba(0,0,0,0.6); 
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+
+        .card_back {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          backface-visibility: hidden;
+          transform: rotateY(180deg);
+          width: 100%;
+          height: 100%;
+          background-color: $color-white;
+          transition: 1s;
+          padding: 5px 10px;
+
+          h3 {
+            font-family: $font-title;
+            @include font(18px, 700);
+            text-align: center;
+            margin: 0 0 7px 0;
+          }
+
+          p {
+            font-family: $font-text;
+            @include font(14px, 500);
+            text-align: center;
+            margin: 5px 0;
+          }
+      
+        }
+
+      }
+
+      .card:hover {
+
+        .card_front,
+        .card_back {
+          cursor: pointer;
+        }
+        
+      }
+
+      .card_rotator {
+      
+        .card_front {
+          transform: rotateY(180deg);
+        }
+
+        .card_back {
+          transform: rotateY(360deg);
+        }
+
+      }
+
+    }
+
+    .pagination_wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 35px 0;
+
+      .pagination {
+        display: flex;
+        margin: 0;
+
+        button {
+          border: none;
+          background-color: transparent;
+          width: 35px;
+          height: 24px;
+          color: $color-white;
+          font-family: $font-text;
+          @include font(18px, 300);
+          transition: 0.5s;
+        }
+
+        .prev-button,
+        .next-button {
+          background-image: url(assets/arrow.png);
+          filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
+        .prev-button {
+          transform: scale(-1, 1);
+        }
+
+        .prev-button:hover,
+        .next-button:hover {
+          filter: invert(74%) sepia(78%) saturate(369%) hue-rotate(2deg) brightness(108%) contrast(92%);
+        }
+
+        .active,
+        button:hover {
+          color: $color-yellow;
+          transition: 0.5s;
+        }
+
+        .more {
+          cursor: auto;
+        }
+
+        .more:hover {
+          color: $color-white;
+        }
+
+      }
+
+    }
+
+    .game_wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      color: $color-white;
+      
+      h2 {
+        display: block;
+        font-family: $font-title;
+        @include font(32px, 700, 32px);
+        text-align: center;
+        margin: 0;
+      }
+
+      p {
+        font-family: $font-text;
+        @include font(14px, 300, 14px);
+        text-align: center;
+      }
+
+      .game_content {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        .game {
+          border: 1px solid $color-white;
+          border-radius: 10px;
+          width: 250px;
+          height: 100px;
+          color: $color-white;
+          transition: 0.5s;
+
+          h3 {
+            font-family: $font-title;
+            @include font(18px, 700);
+            text-align: center;
+          }
+        }
+
+        .game-forbidden {
+          color: $color-black;
+          background: $color-red;
+          border: 1px solid $color-red;
+
+        }
+        
+        .game:hover:not(.game-forbidden) {
+          cursor: pointer;
+          color: $color-black;
+          background-color: $color-yellow;
+          border: 1px solid $color-yellow;
+          transition: 0.5s;
+        }
+
+      }
+
+      
+    }
+
+  }
+
+}
+
