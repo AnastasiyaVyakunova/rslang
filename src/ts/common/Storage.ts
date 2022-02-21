@@ -2,7 +2,6 @@ import { PageContext } from './types';
 
 export default class Storage {
   static store(ctx: PageContext) {
-    console.log(ctx);
     localStorage.setItem('user.username', ctx.user.userName);
     localStorage.setItem('user.token', ctx.user.token);
     localStorage.setItem('user.useremail', ctx.user.userEmail);

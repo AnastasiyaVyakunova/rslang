@@ -38,7 +38,6 @@ window.onload = function () {
       makeTextBookPage();
       break;
     default:
-      console.log('unkown page:', header.id);
       break;
   }
 };
