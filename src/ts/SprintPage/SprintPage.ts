@@ -1,6 +1,8 @@
 import { IPage } from '../common/IPage';
 import Menu from '../common/Menu';
-import { PageContext } from '../common/types';
+import { PageContext, WordContent } from '../common/types';
+
+import { baseUrl } from '../common/constants';
 
 import SprintGameView from './sView';
 
@@ -51,8 +53,24 @@ export default class SprintPage extends IPage {
   async sprintGameStartingHandler(event: Event) {
     // async call here
 
+    const resp: Array<WordContent> = await fetch(
+      `${baseUrl}words?group=${this.selectedLevel}&page=${1}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+      .then((response) => response.json())
+      .catch((err) => {
+        throw new Error(err);
+      });
+
+    console.log(resp, '>>>');
+
     const sprintComponent = document.querySelector('.start-game');
-    sprintComponent.replaceChildren(new SprintGameView().domNode);
+    sprintComponent.replaceChildren(new SprintGameView(resp).domNode);
   }
 
   render(): Promise<boolean> {
